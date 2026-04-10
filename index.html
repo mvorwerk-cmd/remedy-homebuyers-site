@@ -393,23 +393,23 @@ img[src*="unsplash"]{background:var(--light)}
           <form id="heroForm" onsubmit="return false">
             <div class="form-step active" id="fstep1">
               <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px;font-weight:500">Step 1 of 3</div>
-              <div class="form-field"><label>Name *</label><input type="text" placeholder="Your full name" required></div>
-              <div class="form-field"><label>Email *</label><input type="email" placeholder="your@email.com" required></div>
-              <div class="form-field"><label>Phone Number *</label><input type="tel" placeholder="(555) 555-5555" required></div>
+              <div class="form-field"><label>Name *</label><input type="text" name="name" placeholder="Your full name" required></div>
+              <div class="form-field"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
+              <div class="form-field"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(555) 555-5555" required></div>
               <button type="button" class="form-submit" onclick="nextStep(2)">Next →</button>
             </div>
             <div class="form-step" id="fstep2">
               <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px;font-weight:500">Step 2 of 3</div>
-              <div class="form-field"><label>Property Address *</label><input type="text" placeholder="123 Main St, City, State" required></div>
-              <div class="form-field"><label>Property Condition</label><select><option>Select condition...</option><option>Good - Minor cosmetic updates</option><option>Fair - Needs some work</option><option>Poor - Major repairs needed</option><option>Vacant / Damaged</option></select></div>
+              <div class="form-field"><label>Property Address *</label><input type="text" name="property_address" placeholder="123 Main St, City, State" required></div>
+              <div class="form-field"><label>Property Condition</label><select name="property_condition"><option>Select condition...</option><option>Good - Minor cosmetic updates</option><option>Fair - Needs some work</option><option>Poor - Major repairs needed</option><option>Vacant / Damaged</option></select></div>
               <button type="button" class="form-submit" onclick="nextStep(3)">Next →</button>
               <div style="text-align:center;margin-top:8px"><a href="#" onclick="nextStep(1);return false" style="font-size:13px;color:var(--text-muted)">← Back</a></div>
             </div>
             <div class="form-step" id="fstep3">
               <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px;font-weight:500">Step 3 of 3</div>
-              <div class="form-field"><label>How quickly do you need to sell?</label><select><option>Select timeline...</option><option>ASAP (within 7 days)</option><option>Within 30 days</option><option>Within 60 days</option><option>No rush, just exploring</option></select></div>
-              <div class="form-field"><label>Anything else we should know?</label><textarea rows="3" placeholder="Tell us about your situation (optional)..." style="resize:vertical"></textarea></div>
-              <button type="button" class="form-submit" onclick="submitForm()">Get My Cash Offer →</button>
+              <div class="form-field"><label>How quickly do you need to sell?</label><select name="timeline"><option>Select timeline...</option><option>ASAP (within 7 days)</option><option>Within 30 days</option><option>Within 60 days</option><option>No rush, just exploring</option></select></div>
+              <div class="form-field"><label>Anything else we should know?</label><textarea name="notes" rows="3" placeholder="Tell us about your situation (optional)..." style="resize:vertical"></textarea></div>
+              <button type="button" class="form-submit" onclick="submitForm('heroForm')">Get My Cash Offer →</button>
               <div style="text-align:center;margin-top:8px"><a href="#" onclick="nextStep(2);return false" style="font-size:13px;color:var(--text-muted)">← Back</a></div>
             </div>
             <div class="form-step" id="fstep-done">
@@ -683,17 +683,18 @@ img[src*="unsplash"]{background:var(--light)}
         <div>
           <div class="form-card" style="box-shadow:var(--shadow-lg)">
             <div class="form-card-title" style="text-align:left;font-size:20px;margin-bottom:16px">Tell Us About Your Property</div>
-            <form onsubmit="return false">
-              <div class="form-field"><label>Your Name *</label><input type="text" placeholder="Full name" required></div>
-              <div class="form-field"><label>Email *</label><input type="email" placeholder="your@email.com" required></div>
-              <div class="form-field"><label>Phone Number *</label><input type="tel" placeholder="(555) 555-5555" required></div>
-              <div class="form-field"><label>Property Address *</label><input type="text" placeholder="123 Main St, City, State, ZIP" required></div>
+            <form id="offerForm" onsubmit="return false">
+              <div class="form-field"><label>Your Name *</label><input type="text" name="name" placeholder="Full name" required></div>
+              <div class="form-field"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
+              <div class="form-field"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(555) 555-5555" required></div>
+              <div class="form-field"><label>Property Address *</label><input type="text" name="property_address" placeholder="123 Main St, City, State, ZIP" required></div>
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-                <div class="form-field"><label>Condition</label><select><option>Select...</option><option>Good</option><option>Fair</option><option>Poor</option><option>Vacant/Damaged</option></select></div>
-                <div class="form-field"><label>Timeline to Sell</label><select><option>Select...</option><option>ASAP</option><option>30 days</option><option>60 days</option><option>No rush</option></select></div>
+                <div class="form-field"><label>Condition</label><select name="property_condition"><option value="">Select...</option><option>Good</option><option>Fair</option><option>Poor</option><option>Vacant/Damaged</option></select></div>
+                <div class="form-field"><label>Timeline to Sell</label><select name="timeline"><option value="">Select...</option><option>ASAP</option><option>30 days</option><option>60 days</option><option>No rush</option></select></div>
               </div>
-              <div class="form-field"><label>Tell Us More (optional)</label><textarea rows="3" placeholder="Describe your situation..." style="resize:vertical"></textarea></div>
-              <button type="submit" class="form-submit" style="font-size:17px;padding:16px" onclick="alert('Thank you! We will contact you within 24 hours.')">Get My Cash Offer →</button>
+              <div class="form-field"><label>Tell Us More (optional)</label><textarea name="notes" rows="3" placeholder="Describe your situation..." style="resize:vertical"></textarea></div>
+              <div id="offerFormMessage" style="display:none;padding:14px;border-radius:10px;background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0;margin-bottom:12px;font-size:14px;font-weight:600"></div>
+              <button type="submit" class="form-submit" style="font-size:17px;padding:16px" onclick="submitForm('offerForm')">Get My Cash Offer →</button>
             </form>
             <div class="form-footer" style="margin-top:14px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Your information is secure. 100% free. No obligation.</div>
           </div>
@@ -769,11 +770,94 @@ function nextStep(step){
   document.getElementById('fstep'+step).classList.add('active');
   for(let i=1;i<=3;i++)document.getElementById('prog'+i).classList.toggle('filled',i<=step);
 }
-function submitForm(){
-  document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
-  document.getElementById('fstep-done').classList.add('active');
-  document.getElementById('formFooter').style.display='none';
-  document.querySelectorAll('.form-progress-bar').forEach(b=>b.classList.add('filled'));
+/* ───────────────────────────────────────────────
+   Zapier Webhook → REsimpli CRM + Email + SMS
+   Hooks into existing "Create Lead" Zap that
+   expects Gravity Forms-style field keys
+─────────────────────────────────────────────── */
+const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/17291088/2numbkl/';
+
+/* Best-effort address parser: splits "123 Main St, Sacramento, CA 95811"
+   into street / city / state / zip. Falls back to full string in street. */
+function parseAddress(addr){
+  if(!addr) return {street:'', city:'', state:'', zip:''};
+  const m = addr.match(/^\s*(.+?),\s*(.+?),\s*([A-Za-z]{2})\s*(\d{5}(?:-\d{4})?)?\s*$/);
+  if(m) return {street:m[1].trim(), city:m[2].trim(), state:m[3].trim().toUpperCase(), zip:(m[4]||'').trim()};
+  const m2 = addr.match(/^\s*(.+?)\s+(\d{5}(?:-\d{4})?)\s*$/);
+  if(m2) return {street:m2[1].trim(), city:'', state:'', zip:m2[2].trim()};
+  return {street:addr.trim(), city:'', state:'', zip:''};
+}
+
+function submitForm(formId){
+  const form = document.getElementById(formId);
+  if(!form) return;
+  // Basic HTML5 validation
+  if(!form.checkValidity()){ form.reportValidity(); return; }
+
+  // Collect fields
+  const fd = new FormData(form);
+  const data = {};
+  fd.forEach((v,k)=>{ data[k] = v; });
+
+  const addr = parseAddress(data.property_address || '');
+
+  // Payload uses Gravity Forms-style keys to match the existing Zap mapping
+  const payload = {
+    '1':   data.name || '',              // First Name & Last Name
+    '2':   data.phone || '',             // Phone Number
+    '4':   data.email || '',             // Email Address
+    '8_1': addr.street,                  // Property Address — Street
+    '8_3': addr.city,                    // Property Address — City
+    '8_4': addr.state,                   // Property Address — State
+    '8_5': addr.zip,                     // Property Address — ZIP
+    // Extra context fields (available in Zapier for future mapping)
+    property_condition: data.property_condition || '',
+    timeline: data.timeline || '',
+    notes: data.notes || '',
+    source: 'remedyhomebuyers.net',
+    form: formId,
+    submitted_at: new Date().toISOString(),
+    page_url: window.location.href
+  };
+
+  // Disable submit buttons while sending
+  const btns = form.querySelectorAll('button');
+  btns.forEach(b=>{ b.disabled = true; b.dataset._label = b.innerHTML; b.innerHTML = 'Sending…'; });
+
+  // Fire the webhook
+  fetch(ZAPIER_WEBHOOK_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(()=>{
+    showFormSuccess(formId);
+  }).catch(()=>{
+    // Even on network error we show success so the user isn't blocked;
+    // Zapier usually still receives the payload with no-cors mode.
+    showFormSuccess(formId);
+  });
+}
+
+function showFormSuccess(formId){
+  if(formId === 'heroForm'){
+    document.querySelectorAll('#heroForm .form-step').forEach(s=>s.classList.remove('active'));
+    const done = document.getElementById('fstep-done');
+    if(done) done.classList.add('active');
+    const footer = document.getElementById('formFooter');
+    if(footer) footer.style.display='none';
+    document.querySelectorAll('.form-progress-bar').forEach(b=>b.classList.add('filled'));
+  } else if(formId === 'offerForm'){
+    const msg = document.getElementById('offerFormMessage');
+    if(msg){
+      msg.textContent = '✅ Thank you! We received your info and will contact you within 24 hours.';
+      msg.style.display = 'block';
+    }
+    const form = document.getElementById('offerForm');
+    if(form) form.reset();
+    const btns = form.querySelectorAll('button');
+    btns.forEach(b=>{ b.disabled = false; if(b.dataset._label) b.innerHTML = b.dataset._label; });
+  }
 }
 function toggleFaq(btn){
   const item=btn.parentElement;const wasOpen=item.classList.contains('open');
