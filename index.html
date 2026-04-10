@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remedy Home Buyers | Sell Smart. Live Easy.</title>
+<meta name="description" content="Remedy Home Buyers purchases homes nationwide for cash. No realtors, no fees, no repairs. Get your free cash offer today. Call (888) 438-0201.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/*──────────────────────────────────────────
+  RESET & VARIABLES
+──────────────────────────────────────────*/
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#75A375;
+  --green-dark:#5E8A5E;
+  --green-light:#EDF5ED;
+  --navy:#1B3A4B;
+  --dark:#222;
+  --text:#333;
+  --text-light:#555;
+  --text-muted:#888;
+  --white:#fff;
+  --light:#F8F9FA;
+  --warm:#FBF9F6;
+  --border:#E5E5E5;
+  --orange:#E8833A;
+  --orange-hover:#D4742F;
+  --shadow:0 2px 16px rgba(0,0,0,.07);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.12);
+  --radius:8px;
+  --radius-lg:12px;
+  --max:1140px;
+  --nav-h:72px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--text);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;padding-top:var(--nav-h)}
+img{max-width:100%;display:block}
+a{color:var(--green);text-decoration:none;transition:.2s}
+a:hover{color:var(--green-dark)}
+ul{list-style:none}
+.container{max-width:var(--max);margin:0 auto;padding:0 24px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/*──────────────────────────────────────────
+  NAVIGATION
+──────────────────────────────────────────*/
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--border);height:var(--nav-h)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:var(--max);margin:0 auto;padding:0 24px;height:100%}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.nav-logo img{height:50px;width:auto}
+.nav-logo-text{font-size:17px;font-weight:700;color:var(--navy);line-height:1.15}
+.nav-logo-text small{display:block;font-size:9.5px;font-weight:500;color:var(--text-muted);letter-spacing:1.2px;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--text);padding:8px 12px;border-radius:6px;transition:.2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--green);background:var(--green-light)}
+.nav-phone{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--navy);font-size:14px;padding:8px 14px;border-radius:6px;background:var(--light);white-space:nowrap}
+.nav-cta-btn{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:var(--white)!important;padding:10px 18px;border-radius:var(--radius);font-size:13.5px;font-weight:600;transition:.2s;white-space:nowrap}
+.nav-cta-btn:hover{background:var(--green-dark);transform:translateY(-1px);color:var(--white)!important;box-shadow:0 4px 12px rgba(117,163,117,.25)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--white);z-index:999;padding:20px;flex-direction:column;gap:4px;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:16px;font-weight:500;color:var(--text);padding:14px 16px;border-radius:var(--radius);transition:.2s}
+.mobile-menu a:hover,.mobile-menu a.active{background:var(--green-light);color:var(--green)}
+.mobile-menu .nav-cta-btn{text-align:center;justify-content:center;margin-top:8px;padding:14px}
+
+/*──────────────────────────────────────────
+  PAGES (SPA)
+──────────────────────────────────────────*/
+.page{display:none}.page.active{display:block}
+
+/*──────────────────────────────────────────
+  BUTTONS
+──────────────────────────────────────────*/
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius);font-size:15px;font-weight:600;border:none;cursor:pointer;transition:.2s;font-family:inherit;text-decoration:none}
+.btn-primary{background:var(--green);color:var(--white)!important}
+.btn-primary:hover{background:var(--green-dark);color:var(--white)!important;transform:translateY(-1px);box-shadow:0 4px 14px rgba(117,163,117,.3)}
+.btn-orange{background:var(--orange);color:var(--white)!important}
+.btn-orange:hover{background:var(--orange-hover);color:var(--white)!important;transform:translateY(-1px)}
+.btn-outline{background:transparent;border:2px solid var(--green);color:var(--green)!important}
+.btn-outline:hover{background:var(--green);color:var(--white)!important}
+.btn-white{background:var(--white);color:var(--green)!important}
+.btn-white:hover{background:rgba(255,255,255,.9)}
+
+/*──────────────────────────────────────────
+  HERO
+──────────────────────────────────────────*/
+.hero{
+  position:relative;padding:80px 0 90px;color:var(--white);overflow:hidden;
+  background:linear-gradient(rgba(15,35,48,.82),rgba(15,35,48,.88)),url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=80&fit=crop') center/cover no-repeat;
+}
+.hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:60px;background:var(--white);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-grid{display:grid;grid-template-columns:1fr 400px;gap:50px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500;color:rgba(255,255,255,.9);margin-bottom:22px;backdrop-filter:blur(4px)}
+.hero-badge-dot{width:8px;height:8px;background:#4ADE80;border-radius:50%;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:44px;font-weight:800;line-height:1.1;margin-bottom:18px;letter-spacing:-.5px}
+.hero h1 span{color:#4ADE80}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.82);margin-bottom:10px;line-height:1.65;max-width:520px}
+.hero-phone{display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;color:var(--white);margin-top:14px;padding:8px 0;transition:.2s}
+.hero-phone:hover{color:#4ADE80}
+.hero-trust{display:flex;gap:22px;margin-top:28px;flex-wrap:wrap}
+.hero-trust-item{display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(255,255,255,.7);font-weight:500}
+.hero-trust-icon{width:32px;height:32px;background:rgba(255,255,255,.08);border-radius:6px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+
+/* FORM CARD */
+.form-card{background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-lg);color:var(--text)}
+.form-card-title{font-size:18px;font-weight:700;color:var(--navy);text-align:center;margin-bottom:2px}
+.form-card-sub{font-size:13px;color:var(--text-muted);text-align:center;margin-bottom:20px}
+.form-step{display:none}.form-step.active{display:block}
+.form-progress{display:flex;gap:6px;margin-bottom:18px}
+.form-progress-bar{flex:1;height:4px;border-radius:4px;background:var(--border);transition:.3s}
+.form-progress-bar.filled{background:var(--green)}
+.form-field{margin-bottom:12px}
+.form-field label{display:block;font-size:13px;font-weight:600;margin-bottom:5px;color:var(--text)}
+.form-field input,.form-field select,.form-field textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius);font-size:14px;font-family:inherit;background:#FAFAFA;transition:.2s}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--green);background:var(--white);box-shadow:0 0 0 3px rgba(117,163,117,.1)}
+.form-submit{width:100%;padding:14px;background:var(--green);color:var(--white);border:none;border-radius:var(--radius);font-size:16px;font-weight:700;cursor:pointer;transition:.2s;font-family:inherit}
+.form-submit:hover{background:var(--green-dark);transform:translateY(-1px);box-shadow:0 4px 14px rgba(117,163,117,.3)}
+.form-footer{text-align:center;margin-top:12px;font-size:11.5px;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:5px}
+
+/*──────────────────────────────────────────
+  SECTIONS
+──────────────────────────────────────────*/
+.section{padding:72px 0}
+.section-alt{background:var(--light)}
+.section-warm{background:var(--warm)}
+.section-green{background:var(--green);color:var(--white)}
+.section-dark{background:var(--navy);color:var(--white)}
+.section-header{text-align:center;max-width:640px;margin:0 auto 48px}
+.section-label{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--green);margin-bottom:10px}
+.section-green .section-label,.section-dark .section-label{color:rgba(255,255,255,.5)}
+.section-title{font-size:34px;font-weight:800;color:var(--navy);line-height:1.2;letter-spacing:-.3px}
+.section-green .section-title,.section-dark .section-title{color:var(--white)}
+.section-sub{font-size:16px;color:var(--text-light);margin-top:12px;line-height:1.65}
+.section-green .section-sub,.section-dark .section-sub{color:rgba(255,255,255,.7)}
+
+/*──────────────────────────────────────────
+  ABOUT
+──────────────────────────────────────────*/
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-img{border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;position:relative}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-img-overlay{position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:white}
+.about-img-overlay span{font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;opacity:.8}
+.about-img-overlay p{font-size:15px;font-weight:700;margin-top:2px}
+.about-content h2{font-size:30px;font-weight:800;color:var(--navy);margin-bottom:14px;line-height:1.2}
+.about-content p{color:var(--text-light);margin-bottom:14px;line-height:1.7;font-size:15px}
+.about-values{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.about-value{display:flex;align-items:center;gap:6px;background:var(--green-light);color:var(--green-dark);padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600}
+
+/*──────────────────────────────────────────
+  3-STEP PROCESS
+──────────────────────────────────────────*/
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative}
+.steps::before{content:'';position:absolute;top:44px;left:17%;right:17%;height:2px;background:linear-gradient(to right,var(--border),var(--green),var(--border));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:88px;height:88px;margin:0 auto 18px;background:var(--white);border:3px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;color:var(--green);transition:.3s;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.step:hover .step-num{background:var(--green);color:var(--white);box-shadow:0 4px 16px rgba(117,163,117,.25)}
+.step h3{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.step p{font-size:14px;color:var(--text-light);line-height:1.65;max-width:300px;margin:0 auto}
+.step-tag{display:inline-block;margin-top:10px;font-size:11.5px;font-weight:600;color:var(--green);background:var(--green-light);padding:4px 10px;border-radius:12px}
+
+/*──────────────────────────────────────────
+  AREAS
+──────────────────────────────────────────*/
+.areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.area-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:.2s;cursor:default}
+.area-card:hover{border-color:var(--green);box-shadow:var(--shadow);transform:translateY(-2px)}
+.area-card-img{height:120px;overflow:hidden}
+.area-card-img img{width:100%;height:100%;object-fit:cover;transition:.3s}
+.area-card:hover .area-card-img img{transform:scale(1.05)}
+.area-card-body{padding:14px 16px}
+.area-card h4{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.area-card p{font-size:12.5px;color:var(--text-muted)}
+
+/*──────────────────────────────────────────
+  TESTIMONIALS
+──────────────────────────────────────────*/
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.test-card{background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow);position:relative;border:1px solid transparent;transition:.2s}
+.test-card:hover{border-color:var(--green-light);box-shadow:var(--shadow-lg)}
+.test-card::before{content:'\201C';position:absolute;top:12px;left:20px;font-size:56px;color:rgba(117,163,117,.08);font-family:Georgia,serif;line-height:1}
+.test-stars{color:#F59E0B;font-size:15px;letter-spacing:2px;margin-bottom:12px}
+.test-text{font-size:14px;line-height:1.7;color:var(--text);margin-bottom:18px;position:relative;z-index:1}
+.test-author{display:flex;align-items:center;gap:10px;border-top:1px solid var(--border);padding-top:14px}
+.test-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.test-avatar img{width:100%;height:100%;object-fit:cover}
+.test-name{font-weight:600;font-size:14px;color:var(--navy)}
+.test-detail{font-size:12px;color:var(--text-muted)}
+
+/*──────────────────────────────────────────
+  COMPARISON TABLE
+──────────────────────────────────────────*/
+.comp-wrap{overflow-x:auto;border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+.comp-table{width:100%;border-collapse:separate;border-spacing:0}
+.comp-table th{background:var(--navy);color:var(--white);padding:16px 20px;font-size:14px;font-weight:700;text-align:left}
+.comp-table th:nth-child(2){background:var(--green)}
+.comp-table td{padding:13px 20px;font-size:14px;border-bottom:1px solid var(--border)}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr:nth-child(even) td{background:#FAFAFA}
+.comp-table td:first-child{font-weight:600;color:var(--navy)}
+.comp-good{color:var(--green-dark);font-weight:600}
+.comp-bad{color:#993333}
+
+/*──────────────────────────────────────────
+  FAQ
+──────────────────────────────────────────*/
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;transition:.2s}
+.faq-item:hover{border-color:var(--green)}
+.faq-item.open{border-color:var(--green);box-shadow:var(--shadow)}
+.faq-q{width:100%;padding:18px 20px;background:none;border:none;text-align:left;cursor:pointer;font-size:15px;font-weight:600;color:var(--navy);font-family:inherit;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq-arrow{flex-shrink:0;width:28px;height:28px;background:var(--light);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.3s}
+.faq-item.open .faq-arrow{background:var(--green);color:var(--white);transform:rotate(180deg)}
+.faq-a{display:none;padding:0 20px 18px;font-size:14px;line-height:1.75;color:var(--text-light)}
+.faq-item.open .faq-a{display:block}
+
+/*──────────────────────────────────────────
+  PAGE HERO (inner pages)
+──────────────────────────────────────────*/
+.page-hero{position:relative;padding:56px 0;text-align:center;color:var(--white);overflow:hidden}
+.page-hero-bg{position:absolute;inset:0;z-index:0}
+.page-hero-bg img{width:100%;height:100%;object-fit:cover}
+.page-hero-bg{background:var(--navy)}
+.area-card-img{background:var(--green-light)}
+.cta-photo-bg{background:var(--navy)}
+.about-img{background:var(--green-light)}
+img[src*="unsplash"]{background:var(--light)}
+.page-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(rgba(15,35,48,.85),rgba(15,35,48,.92))}
+.page-hero-content{position:relative;z-index:1}
+.page-hero h1{font-size:34px;font-weight:800;margin-bottom:8px}
+.page-hero p{color:rgba(255,255,255,.7);font-size:16px}
+
+/*──────────────────────────────────────────
+  BLOG
+──────────────────────────────────────────*/
+.blog-empty{text-align:center;padding:80px 20px}
+.blog-empty h3{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.blog-empty p{color:var(--text-light);max-width:440px;margin:0 auto 24px;font-size:15px}
+
+/*──────────────────────────────────────────
+  GET AN OFFER
+──────────────────────────────────────────*/
+.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;padding-top:40px}
+.offer-sidebar{position:sticky;top:calc(var(--nav-h) + 20px)}
+.offer-trust-item{display:flex;gap:12px;margin-bottom:20px;align-items:flex-start}
+.offer-trust-icon{width:40px;height:40px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.offer-trust-title{font-weight:600;color:var(--navy);font-size:14px}
+.offer-trust-desc{font-size:13px;color:var(--text-light);margin-top:2px;line-height:1.5}
+
+/*──────────────────────────────────────────
+  CTA BANNER
+──────────────────────────────────────────*/
+.cta-banner{text-align:center;padding:64px 20px;position:relative;overflow:hidden}
+.cta-banner h2{font-size:30px;font-weight:800;margin-bottom:12px}
+.cta-banner p{font-size:16px;margin-bottom:24px;max-width:520px;margin-left:auto;margin-right:auto}
+.cta-banner .btn{margin:0 6px 10px}
+
+/* Photo CTA variant */
+.cta-photo{position:relative;padding:80px 20px;color:var(--white);overflow:hidden}
+.cta-photo-bg{position:absolute;inset:0;z-index:0}
+.cta-photo-bg img{width:100%;height:100%;object-fit:cover}
+.cta-photo-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(117,163,117,.9),rgba(29,58,75,.92))}
+.cta-photo-content{position:relative;z-index:1;text-align:center}
+
+/*──────────────────────────────────────────
+  FOOTER
+──────────────────────────────────────────*/
+.footer{background:#0F2D3A;color:rgba(255,255,255,.6);padding:50px 0 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+.footer-brand p{font-size:13px;line-height:1.7;margin-top:10px;max-width:280px}
+.footer-logo{display:flex;align-items:center;gap:8px}
+.footer-logo img{height:36px;width:auto;opacity:.8}
+.footer-logo-text{font-size:17px;font-weight:700;color:var(--white)}
+.footer h4{font-size:12px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.footer ul li{margin-bottom:8px}
+.footer ul a{font-size:13.5px;color:rgba(255,255,255,.6);transition:.2s}
+.footer ul a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:12px;flex-wrap:wrap;gap:10px}
+.footer-bottom a{color:rgba(255,255,255,.5)}
+
+/*──────────────────────────────────────────
+  FLOATING MOBILE CTA
+──────────────────────────────────────────*/
+.mobile-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--white);border-top:1px solid var(--border);padding:10px 14px;box-shadow:0 -3px 16px rgba(0,0,0,.08)}
+.mobile-bar-inner{display:flex;gap:8px}
+.mobile-bar a{flex:1;text-align:center;padding:13px;border-radius:var(--radius);font-weight:700;font-size:14px;color:var(--white)!important}
+.mb-call{background:var(--navy)}
+.mb-offer{background:var(--green)}
+
+/*──────────────────────────────────────────
+  RESPONSIVE
+──────────────────────────────────────────*/
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .form-card{max-width:480px}
+  .about-grid,.offer-grid{grid-template-columns:1fr;gap:28px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  body{padding-bottom:64px}
+  .nav-links,.nav-phone{display:none}
+  .hamburger{display:block}
+  .mobile-bar{display:block}
+  .hero{padding:48px 0 64px}
+  .hero h1{font-size:32px}
+  .hero-sub{font-size:15px}
+  .section{padding:52px 0}
+  .section-title{font-size:26px}
+  .steps{grid-template-columns:1fr;gap:24px}
+  .steps::before{display:none}
+  .areas-grid{grid-template-columns:1fr 1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .comp-table th,.comp-table td{padding:10px 12px;font-size:13px}
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  .cta-banner h2{font-size:24px}
+  .page-hero h1{font-size:28px}
+}
+@media(max-width:480px){
+  .hero h1{font-size:27px}
+  .container{padding:0 16px}
+  .form-card{padding:22px 18px}
+  .areas-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')">
+      <img src="logo.png" alt="Remedy Home Buyers - Sell Smart. Live Easy." width="50" height="50">
+    </div>
+    <div class="nav-links">
+      <a href="#" onclick="showPage('home');return false" class="active" data-page="home">Home</a>
+      <a href="#" onclick="showPage('how');return false" data-page="how">How It Works</a>
+      <a href="#" onclick="showPage('success');return false" data-page="success">Success Stories</a>
+      <a href="#" onclick="showPage('faq');return false" data-page="faq">FAQ</a>
+      <a href="#" onclick="showPage('blog');return false" data-page="blog">Blog</a>
+      <a href="tel:8884380201" class="nav-phone">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        (888) 438-0201
+      </a>
+      <a href="#" onclick="showPage('offer');return false" class="nav-cta-btn" data-page="offer">Get An Offer</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showPage('home');return false" data-page="home" class="active">Home</a>
+  <a href="#" onclick="showPage('how');return false" data-page="how">How It Works</a>
+  <a href="#" onclick="showPage('success');return false" data-page="success">Success Stories</a>
+  <a href="#" onclick="showPage('faq');return false" data-page="faq">FAQ</a>
+  <a href="#" onclick="showPage('blog');return false" data-page="blog">Blog</a>
+  <a href="tel:8884380201" style="font-weight:700;color:var(--navy)">📞 (888) 438-0201</a>
+  <a href="#" onclick="showPage('offer');return false" class="nav-cta-btn" data-page="offer">Get An Offer →</a>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO with real property background -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge"><span class="hero-badge-dot"></span> Sell Smart. Live Easy.</div>
+          <h1>We Buy Houses<br>Nationwide for <span>Cash</span></h1>
+          <p class="hero-sub">No Realtors. No Fees. No Repairs. <strong>FAST &amp; EASY!</strong><br>Just call us, send a text, or fill in the form for your FREE cash offer today.</p>
+          <a href="tel:8884380201" class="hero-phone">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (888) 438-0201
+          </a>
+          <div class="hero-trust">
+            <div class="hero-trust-item"><div class="hero-trust-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>5-Star Rated</div>
+            <div class="hero-trust-item"><div class="hero-trust-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>BBB Accredited</div>
+            <div class="hero-trust-item"><div class="hero-trust-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>100+ Homes Purchased</div>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="form-card-title">Get Your FREE Cash Offer</div>
+          <div class="form-card-sub">No obligation. Takes about 60 seconds.</div>
+          <div class="form-progress"><div class="form-progress-bar filled" id="prog1"></div><div class="form-progress-bar" id="prog2"></div><div class="form-progress-bar" id="prog3"></div></div>
+          <form id="heroForm" onsubmit="return false">
+            <div class="form-step active" id="fstep1">
+              <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px;font-weight:500">Step 1 of 3</div>
+              <div class="form-field"><label>Name *</label><input type="text" placeholder="Your full name" required></div>
+              <div class="form-field"><label>Email *</label><input type="email" placeholder="your@email.com" required></div>
+              <div class="form-field"><label>Phone Number *</label><input type="tel" placeholder="(555) 555-5555" required></div>
+              <button type="button" class="form-submit" onclick="nextStep(2)">Next →</button>
+            </div>
+            <div class="form-step" id="fstep2">
+              <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px;font-weight:500">Step 2 of 3</div>
+              <div class="form-field"><label>Property Address *</label><input type="text" placeholder="123 Main St, City, State" required></div>
+              <div class="form-field"><label>Property Condition</label><select><option>Select condition...</option><option>Good - Minor cosmetic updates</option><option>Fair - Needs some work</option><option>Poor - Major repairs needed</option><option>Vacant / Damaged</option></select></div>
+              <button type="button" class="form-submit" onclick="nextStep(3)">Next →</button>
+              <div style="text-align:center;margin-top:8px"><a href="#" onclick="nextStep(1);return false" style="font-size:13px;color:var(--text-muted)">← Back</a></div>
+            </div>
+            <div class="form-step" id="fstep3">
+              <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px;font-weight:500">Step 3 of 3</div>
+              <div class="form-field"><label>How quickly do you need to sell?</label><select><option>Select timeline...</option><option>ASAP (within 7 days)</option><option>Within 30 days</option><option>Within 60 days</option><option>No rush, just exploring</option></select></div>
+              <div class="form-field"><label>Anything else we should know?</label><textarea rows="3" placeholder="Tell us about your situation (optional)..." style="resize:vertical"></textarea></div>
+              <button type="button" class="form-submit" onclick="submitForm()">Get My Cash Offer →</button>
+              <div style="text-align:center;margin-top:8px"><a href="#" onclick="nextStep(2);return false" style="font-size:13px;color:var(--text-muted)">← Back</a></div>
+            </div>
+            <div class="form-step" id="fstep-done">
+              <div style="text-align:center;padding:20px 0"><div style="font-size:48px;margin-bottom:12px">✅</div><h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px">We Got Your Info!</h3><p style="font-size:14px;color:var(--text-light);line-height:1.6">We'll review your property and get back to you within 24 hours with a fair cash offer. No obligation.</p><a href="tel:8884380201" class="btn btn-primary" style="margin-top:16px">Call Us Now: (888) 438-0201</a></div>
+            </div>
+          </form>
+          <div class="form-footer" id="formFooter"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>100% Free. No spam. No obligation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80&fit=crop" alt="Handing over house keys" loading="lazy">
+          <div class="about-img-overlay">
+            <span>Our Promise</span>
+            <p>Relationships over transactions.</p>
+          </div>
+        </div>
+        <div class="about-content">
+          <div class="section-label">About Remedy Home Buyers</div>
+          <h2>We Provide Solutions That Help People Move Forward</h2>
+          <p>At Remedy Home Buyers, we don't just buy houses — we help homeowners navigate tough situations with honesty and compassion. Despite our nationwide reach, we maintain a personal, small-town approach, valuing relationships over transactions.</p>
+          <p>We promise to be fair, to never take advantage of the misfortunes of others, and to do whatever it takes to come to a win-win transaction. A person in distress needs someone that can help — not someone that will take advantage.</p>
+          <div class="about-values">
+            <span class="about-value">✓ Honest Communication</span>
+            <span class="about-value">✓ Fair Offers</span>
+            <span class="about-value">✓ Compassionate Service</span>
+            <span class="about-value">✓ Win-Win Transactions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-STEP PROCESS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header"><div class="section-label">Simple Process</div><h2 class="section-title">How We Buy Your House</h2><p class="section-sub">Three simple steps. That's it.</p></div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h3>Contact Us</h3><p>Call us at (888) 438-0201, send a text, or fill in the form. We'll ask a few basic questions about your property.</p><span class="step-tag">⏱ Takes ~10 min</span></div>
+        <div class="step"><div class="step-num">2</div><h3>Get Your Cash Offer</h3><p>We evaluate your house and make a fair cash offer. We'll show you exactly how we calculate it — no surprises.</p><span class="step-tag">⏱ Within 24 hours</span></div>
+        <div class="step"><div class="step-num">3</div><h3>Get Paid &amp; Close</h3><p>Pick your closing date. We close at a local, reputable title company. You walk away with cash — fast.</p><span class="step-tag">⏱ As fast as 7 days</span></div>
+      </div>
+      <div style="text-align:center;margin-top:36px"><a href="#" onclick="showPage('offer');return false" class="btn btn-primary">Get My Free Cash Offer →</a></div>
+    </div>
+  </section>
+
+  <!-- AREAS SERVED (with real photos) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header"><div class="section-label">Where We Buy</div><h2 class="section-title">Areas We Serve</h2><p class="section-sub">We buy houses across the Greater Sacramento area and nationwide.</p></div>
+      <div class="areas-grid">
+        <div class="area-card">
+          <div class="area-card-img"><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&q=75&fit=crop" alt="Sacramento County homes" loading="lazy"></div>
+          <div class="area-card-body"><h4>Sacramento County</h4><p>Sacramento, Elk Grove, Rancho Cordova, Citrus Heights &amp; more</p></div>
+        </div>
+        <div class="area-card">
+          <div class="area-card-img"><img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&q=75&fit=crop" alt="Placer County homes" loading="lazy"></div>
+          <div class="area-card-body"><h4>Placer County</h4><p>Roseville, Rocklin, Lincoln, Auburn &amp; more</p></div>
+        </div>
+        <div class="area-card">
+          <div class="area-card-img"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=75&fit=crop" alt="El Dorado County homes" loading="lazy"></div>
+          <div class="area-card-body"><h4>El Dorado County</h4><p>Folsom, El Dorado Hills, Cameron Park &amp; more</p></div>
+        </div>
+        <div class="area-card">
+          <div class="area-card-img"><img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=400&q=75&fit=crop" alt="Yolo County homes" loading="lazy"></div>
+          <div class="area-card-body"><h4>Yolo County</h4><p>Davis, Woodland, West Sacramento &amp; more</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-warm">
+    <div class="container">
+      <div class="section-header"><div class="section-label">Success Stories</div><h2 class="section-title">What Our Sellers Say</h2></div>
+      <div style="text-align:center;margin-bottom:8px"><span style="font-size:36px;font-weight:800;color:var(--navy)">5.0</span> <span style="color:#F59E0B;font-size:20px;letter-spacing:2px">★★★★★</span> <span style="font-size:14px;color:var(--text-muted);margin-left:4px">7 Google Reviews</span></div>
+      <div class="testimonials-grid">
+        <div class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <div class="test-text">"Matt and the team at Remedy Home Buyers are great. I was able to get a great offer and they worked quickly to get my house sold. I will definitely use Remedy Home Buyers again, they take all the hassle out of selling your home and still get you the best offer. Thank you for all your help everyone!"</div>
+          <div class="test-author"><div class="test-avatar" style="background:var(--green);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border-radius:50%;width:44px;height:44px">I</div><div><div class="test-name">Ishmael Maldonado</div><div class="test-detail">★★★★★ · Google Review</div></div></div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <div class="test-text">"Called Matt, worked out details, Amber finished up and closed on time. Stress free, super simple. (It's that easy) consider it done!"</div>
+          <div class="test-author"><div class="test-avatar" style="background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border-radius:50%;width:44px;height:44px">R</div><div><div class="test-name">Robert Obert</div><div class="test-detail">★★★★★ · Google Review</div></div></div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <div class="test-text">"Matt Vorwerk was very professional and pleasant to work with. Matt was very patient answering every question or concerns I had. He has a lot of experience which made the transition smooth. I received my money promptly. Good guy."</div>
+          <div class="test-author"><div class="test-avatar" style="background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border-radius:50%;width:44px;height:44px">M</div><div><div class="test-name">Myra Snow</div><div class="test-detail">★★★★★ · Google Review</div></div></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px"><a href="https://share.google/vSPhh9rILZzg5qYA8" target="_blank" rel="noopener" class="btn btn-outline">See All 7 Google Reviews →</a></div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header"><div class="section-label">Why Remedy</div><h2 class="section-title">Remedy vs. Traditional Sale</h2></div>
+      <div class="comp-wrap">
+        <table class="comp-table">
+          <thead><tr><th>Factor</th><th>✓ Selling to Remedy</th><th>Traditional Agent Sale</th></tr></thead>
+          <tbody>
+            <tr><td>Commissions / Fees</td><td class="comp-good">✓ None — $0</td><td class="comp-bad">5-6% of sale price</td></tr>
+            <tr><td>Repairs Needed</td><td class="comp-good">✓ None — we buy as-is</td><td class="comp-bad">$5K-$50K+ out of pocket</td></tr>
+            <tr><td>Timeline</td><td class="comp-good">✓ Close in as few as 7 days</td><td class="comp-bad">3-6+ months average</td></tr>
+            <tr><td>Closing Costs</td><td class="comp-good">✓ We pay them</td><td class="comp-bad">2-3% seller pays</td></tr>
+            <tr><td>Showings</td><td class="comp-good">✓ None</td><td class="comp-bad">Dozens of strangers</td></tr>
+            <tr><td>Certainty</td><td class="comp-good">✓ Cash — no financing fall-through</td><td class="comp-bad">Buyers can back out</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA with background photo -->
+  <section class="cta-photo">
+    <div class="cta-photo-bg"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&q=75&fit=crop" alt="Beautiful home" loading="lazy"></div>
+    <div class="cta-photo-content">
+      <h2 style="font-size:32px;font-weight:800;margin-bottom:12px">Ready to Sell Your House Fast?</h2>
+      <p style="color:rgba(255,255,255,.85);font-size:17px;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto">Get your free, no-obligation cash offer today. No repairs. No fees. No hassle.</p>
+      <a href="#" onclick="showPage('offer');return false" class="btn btn-white" style="margin:0 6px 10px">Get My Cash Offer →</a>
+      <a href="https://calendly.com/matt-vorwerk-remedyhomebuyers/30min" target="_blank" rel="noopener" class="btn" style="border:2px solid rgba(255,255,255,.4);color:white;margin:0 6px 10px">📅 Schedule a Call</a>
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: HOW IT WORKS
+═══════════════════════════════════════════ -->
+<div class="page" id="page-how">
+  <section class="page-hero">
+    <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1400&q=75&fit=crop" alt="Home interior" loading="lazy"></div>
+    <div class="page-hero-content container"><h1>How We Buy Your House</h1><p>Fair offers. Fast closing. Zero stress.</p></div>
+  </section>
+  <section class="section section-alt">
+    <div class="container">
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h3>Tell Us About Your Property</h3><p>Call us at (888) 438-0201, send a text, or fill in the form. You don't need a realtor to sell your house — we'll evaluate it using advanced software and market data.</p><span class="step-tag">⏱ Takes ~10 min</span></div>
+        <div class="step"><div class="step-num">2</div><h3>Receive Your Cash Offer</h3><p>We can make you a no-obligation, fair all-cash offer in as little as 24 hours. We'll walk you through exactly how we calculated it.</p><span class="step-tag">⏱ Within 24 hours</span></div>
+        <div class="step"><div class="step-num">3</div><h3>Close &amp; Get Paid</h3><p>Once your contract is signed, we set up a closing date you choose at a local, reputable title company. You receive your funds via bank check or money wire.</p><span class="step-tag">⏱ As fast as 7 days</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-header"><div class="section-label">Transparency</div><h2 class="section-title">How We Calculate Your Offer</h2><p class="section-sub">Our offers are based on the After Repaired Value of your house, allowing us to make the highest fair offers.</p></div>
+      <div style="max-width:600px;margin:0 auto;background:var(--light);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border)">
+        <div style="font-size:15px;line-height:2;color:var(--text)">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>After-Repair Value (ARV)</span><strong style="color:var(--green)">Market value fully fixed</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>− Cost of Repairs</span><span style="color:var(--text-light)">What it takes to renovate</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>− Our Selling Costs</span><span style="color:var(--text-light)">Costs to sell after fix-up</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>− Our Minimum Profit</span><span style="color:var(--text-light)">Our fee for the service</span></div>
+          <div style="display:flex;justify-content:space-between;padding:12px 0;font-size:17px;font-weight:700;color:var(--green)"><span>= Your Cash Offer</span><span>💰</span></div>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:20px;font-size:14px;color:var(--text-light)">It's 100% FREE and there is never any obligation to accept.</p>
+    </div>
+  </section>
+  <section class="cta-photo">
+    <div class="cta-photo-bg"><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1400&q=75&fit=crop" alt="Home exterior" loading="lazy"></div>
+    <div class="cta-photo-content"><h2 style="font-size:30px;font-weight:800;margin-bottom:12px">See What Your House Is Worth</h2><p style="color:rgba(255,255,255,.8);font-size:16px;margin-bottom:24px">Get a fair, transparent cash offer with zero obligation.</p><a href="#" onclick="showPage('offer');return false" class="btn btn-white">Get My Cash Offer →</a> <a href="https://calendly.com/matt-vorwerk-remedyhomebuyers/30min" target="_blank" rel="noopener" class="btn" style="border:2px solid rgba(255,255,255,.4);color:white">📅 Schedule a Call</a></div>
+  </section>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: SUCCESS STORIES
+═══════════════════════════════════════════ -->
+<div class="page" id="page-success">
+  <section class="page-hero">
+    <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&q=75&fit=crop" alt="Home" loading="lazy"></div>
+    <div class="page-hero-content container"><h1>Success Stories</h1><p>Real people. Real results. See why sellers trust Remedy.</p></div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:16px"><span style="font-size:40px;font-weight:800;color:var(--navy)">5.0</span> <span style="color:#F59E0B;font-size:22px;letter-spacing:2px">★★★★★</span> <span style="font-size:15px;color:var(--text-muted);margin-left:6px">7 Google Reviews</span></div>
+      <div class="testimonials-grid">
+        <!-- Review 1: Ishmael Maldonado -->
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Matt and the team at Remedy Home Buyers are great. I was able to get a great offer and they worked quickly to get my house sold. I will definitely use Remedy Home Buyers again, they take all the hassle out of selling your home and still get you the best offer. Thank you for all your help everyone!"</div><div class="test-author"><div class="test-avatar" style="background:var(--green);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border-radius:50%;width:44px;height:44px">I</div><div><div class="test-name">Ishmael Maldonado</div><div class="test-detail">★★★★★ · Google Review</div></div></div></div>
+        <!-- Review 2: Robert Obert -->
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Called Matt, worked out details, Amber finished up and closed on time. Stress free, super simple. (It's that easy) consider it done!"</div><div class="test-author"><div class="test-avatar" style="background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border-radius:50%;width:44px;height:44px">R</div><div><div class="test-name">Robert Obert</div><div class="test-detail">★★★★★ · Google Review</div></div></div></div>
+        <!-- Review 3: Bryan Dodge -->
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"We had an amazing experience working with Remedy Home Buyers! Their communication was outstanding throughout the entire process. They were efficient, professional, and ensured that we closed on time without any delays."</div><div class="test-author"><div class="test-avatar" style="background:#5B7BB5;color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border-radius:50%;width:44px;height:44px">B</div><div><div class="test-name">Bryan Dodge</div><div class="test-detail">★★★★★ · Local Guide · Google Review</div></div></div></div>
+        <!-- Review 4: Myra Snow -->
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Matt Vorwerk was very professional and pleasant to work with. Matt was very patient answering every question or concerns I had. He has a lot of experience which made the transition smooth. I received my money promptly. Good guy."</div><div class="test-author"><div class="test-avatar" style="background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border-radius:50%;width:44px;height:44px">M</div><div><div class="test-name">Myra Snow</div><div class="test-detail">★★★★★ · Google Review</div></div></div></div>
+        <!-- Review 5: Don Killian -->
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Matt was fantastic to work with! Great communication and very up front. Kept all promises made and always there when I had a question or concern. Thank you for a smooth process and great experience!"</div><div class="test-author"><div class="test-avatar" style="background:#8B6B4A;color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border-radius:50%;width:44px;height:44px">D</div><div><div class="test-name">Don Killian</div><div class="test-detail">★★★★★ · Google Review</div></div></div></div>
+        <!-- Review 6: Noah Evans -->
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Matt and his team are awesome, we love working with them and appreciate how hard they work make things fair for everyone. Highly recommend!"</div><div class="test-author"><div class="test-avatar" style="background:#6B5B8E;color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border-radius:50%;width:44px;height:44px">N</div><div><div class="test-name">Noah Evans</div><div class="test-detail">★★★★★ · Local Guide · Google Review</div></div></div></div>
+        <!-- Review 7: Joshua Haines -->
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Honest, knowledgeable, &amp; upfront. Most importantly, they closed. Would definitely recommend Matt."</div><div class="test-author"><div class="test-avatar" style="background:var(--green);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border-radius:50%;width:44px;height:44px">J</div><div><div class="test-name">Joshua Haines</div><div class="test-detail">★★★★★ · Google Review</div></div></div></div>
+      </div>
+      <!-- Google Reviews link -->
+      <div style="text-align:center;margin-top:40px">
+        <p style="color:var(--text-light);font-size:14px;margin-bottom:16px">All reviews sourced directly from our Google Business Profile. <a href="https://share.google/vSPhh9rILZzg5qYA8" target="_blank" rel="noopener" style="text-decoration:underline">Verify on Google →</a></p>
+        <a href="#" onclick="showPage('offer');return false" class="btn btn-primary">Get Your Free Cash Offer →</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: FAQ
+═══════════════════════════════════════════ -->
+<div class="page" id="page-faq">
+  <section class="page-hero">
+    <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=75&fit=crop" alt="Home" loading="lazy"></div>
+    <div class="page-hero-content container"><h1>Frequently Asked Questions</h1><p>Straight answers. No runaround.</p></div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="faq-list">
+        <div class="faq-item open"><button class="faq-q" onclick="toggleFaq(this)">How do you determine your cash offer?<span class="faq-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a">Our offers are based on the After Repaired Value (ARV) of your house — what it would be worth completely renovated based on current market standards. We subtract the cost of repairs, our selling costs, and our minimum profit. We walk you through every number so there are no surprises. We use advanced software and market data to ensure our offers are fair.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there any cost or obligation?<span class="faq-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a">It's 100% FREE and there is never any obligation to accept our offer. If the offer doesn't work for you, we part ways as friends. No pressure, no hard feelings.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need to make repairs before selling?<span class="faq-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a">No. We buy your house as-is. No repairs, no inspections, no cleaning. Leave whatever you don't want — we handle everything after closing.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How fast can you close?<span class="faq-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a">We can close in as little as 7 days. But if you need more time — 30 or 60 days — that works too. You pick the closing date that works best for you.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are there any fees or commissions?<span class="faq-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a">No realtors, no fees, no commissions. We are direct buyers — not agents. We even pay the closing costs. You keep every dollar of your offer.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What types of properties do you buy?<span class="faq-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a">We buy single-family homes, condos, townhouses, duplexes, and small multi-family properties. Any condition, any situation — foreclosure, inherited, behind on repairs, divorce, problem tenants, vacant, and more.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Will you buy my house if it has liens or back taxes?<span class="faq-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a">Yes. We regularly purchase properties with tax liens, mechanic's liens, and other title issues. Our title company works through these during closing. In many cases, liens are satisfied from the sale proceeds.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How is this different from listing with an agent?<span class="faq-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a">When you list with an agent, you pay 5-6% in commissions, make repairs, host showings, and wait months with no guarantee. With Remedy, you get a cash offer, sell as-is, pay zero fees, and close on your timeline. Faster, simpler, certain.</div></div>
+      </div>
+      <div style="text-align:center;margin-top:40px"><p style="font-size:15px;color:var(--text-light);margin-bottom:16px">Still have questions? We're happy to help.</p><a href="tel:8884380201" class="btn btn-primary">Call (888) 438-0201</a></div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: BLOG
+═══════════════════════════════════════════ -->
+<div class="page" id="page-blog">
+  <section class="page-hero">
+    <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1400&q=75&fit=crop" alt="Home office" loading="lazy"></div>
+    <div class="page-hero-content container"><h1>Blog</h1><p>Tips, guides, and insights for homeowners</p></div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="blog-empty">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--border)" stroke-width="1.5" style="margin:0 auto 16px;display:block"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <h3>Coming Soon</h3>
+        <p>We're working on helpful articles about selling your home, navigating foreclosure, understanding cash offers, and more. Check back soon!</p>
+        <a href="#" onclick="showPage('offer');return false" class="btn btn-primary">Get Your Cash Offer Now →</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: GET AN OFFER
+═══════════════════════════════════════════ -->
+<div class="page" id="page-offer">
+  <section class="page-hero" style="padding:48px 0">
+    <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&q=75&fit=crop" alt="Home" loading="lazy"></div>
+    <div class="page-hero-content container"><h1>Get Your FREE Cash Offer Today</h1><p>Fill out the form below and we'll get back to you within 24 hours.</p></div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="offer-grid">
+        <div>
+          <div class="form-card" style="box-shadow:var(--shadow-lg)">
+            <div class="form-card-title" style="text-align:left;font-size:20px;margin-bottom:16px">Tell Us About Your Property</div>
+            <form onsubmit="return false">
+              <div class="form-field"><label>Your Name *</label><input type="text" placeholder="Full name" required></div>
+              <div class="form-field"><label>Email *</label><input type="email" placeholder="your@email.com" required></div>
+              <div class="form-field"><label>Phone Number *</label><input type="tel" placeholder="(555) 555-5555" required></div>
+              <div class="form-field"><label>Property Address *</label><input type="text" placeholder="123 Main St, City, State, ZIP" required></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div class="form-field"><label>Condition</label><select><option>Select...</option><option>Good</option><option>Fair</option><option>Poor</option><option>Vacant/Damaged</option></select></div>
+                <div class="form-field"><label>Timeline to Sell</label><select><option>Select...</option><option>ASAP</option><option>30 days</option><option>60 days</option><option>No rush</option></select></div>
+              </div>
+              <div class="form-field"><label>Tell Us More (optional)</label><textarea rows="3" placeholder="Describe your situation..." style="resize:vertical"></textarea></div>
+              <button type="submit" class="form-submit" style="font-size:17px;padding:16px" onclick="alert('Thank you! We will contact you within 24 hours.')">Get My Cash Offer →</button>
+            </form>
+            <div class="form-footer" style="margin-top:14px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Your information is secure. 100% free. No obligation.</div>
+          </div>
+        </div>
+        <div class="offer-sidebar">
+          <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:20px">Why Sell to Remedy?</h3>
+          <div class="offer-trust-item"><div class="offer-trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><div class="offer-trust-title">No Fees or Commissions</div><div class="offer-trust-desc">We're direct buyers. You pay nothing — we even cover closing costs.</div></div></div>
+          <div class="offer-trust-item"><div class="offer-trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="offer-trust-title">Close in as Few as 7 Days</div><div class="offer-trust-desc">Or on your timeline. You pick the closing date.</div></div></div>
+          <div class="offer-trust-item"><div class="offer-trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><div><div class="offer-trust-title">No Repairs Needed</div><div class="offer-trust-desc">Sell as-is. Leave what you don't want. We handle everything.</div></div></div>
+          <div class="offer-trust-item"><div class="offer-trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="offer-trust-title">Fair &amp; Transparent</div><div class="offer-trust-desc">We show you exactly how we calculate your offer. No hidden costs.</div></div></div>
+          <div style="background:var(--light);border-radius:var(--radius-lg);padding:20px;margin-top:24px;border:1px solid var(--border)">
+            <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px">Prefer to talk?</div>
+            <a href="tel:8884380201" style="display:flex;align-items:center;gap:8px;font-size:20px;font-weight:700;color:var(--green)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(888) 438-0201</a>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Call or text anytime</div>
+            <a href="https://calendly.com/matt-vorwerk-remedyhomebuyers/30min" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:14px;font-weight:600;color:var(--green);padding:8px 16px;border:2px solid var(--green);border-radius:var(--radius);transition:.2s">📅 Schedule a Call</a>
+          </div>
+          <!-- Testimonial mini -->
+          <div style="margin-top:24px;background:var(--warm);border-radius:var(--radius-lg);padding:20px;border:1px solid var(--border)">
+            <div style="color:#F59E0B;font-size:14px;letter-spacing:2px;margin-bottom:8px">★★★★★</div>
+            <p style="font-size:13px;color:var(--text);line-height:1.6;font-style:italic">"Called Matt, worked out details, Amber finished up and closed on time. Stress free, super simple. Consider it done!"</p>
+            <p style="font-size:12px;color:var(--text-muted);margin-top:8px;font-weight:600">— Robert Obert, Google Review</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     FOOTER
+═══════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:white;border-radius:50%;padding:3px;flex-shrink:0"><img src="logo.png" alt="Remedy Home Buyers" width="42" height="42" style="border-radius:50%"></span><span class="footer-logo-text">Remedy Home Buyers</span></div>
+        <p>We provide solutions that help people move forward. Honest communication, fair offers, and compassionate service — valuing relationships over transactions.</p>
+        <p style="margin-top:10px"><a href="tel:8884380201" style="color:var(--white);font-weight:600">(888) 438-0201</a><br>1401 21st Street Suite R, Sacramento, CA 95811</p>
+      </div>
+      <div><h4>Quick Links</h4><ul><li><a href="#" onclick="showPage('home');return false">Home</a></li><li><a href="#" onclick="showPage('how');return false">How It Works</a></li><li><a href="#" onclick="showPage('success');return false">Success Stories</a></li><li><a href="#" onclick="showPage('faq');return false">FAQ</a></li><li><a href="#" onclick="showPage('blog');return false">Blog</a></li></ul></div>
+      <div><h4>Service Areas</h4><ul><li><a href="#">Sacramento County</a></li><li><a href="#">Placer County</a></li><li><a href="#">El Dorado County</a></li><li><a href="#">Yolo County</a></li><li><a href="#">Nationwide</a></li></ul></div>
+      <div><h4>Get Started</h4><ul><li><a href="#" onclick="showPage('offer');return false">Get a Cash Offer</a></li><li><a href="tel:8884380201">Call Us</a></li><li><a href="sms:8884380201">Send a Text</a></li><li><a href="https://calendly.com/matt-vorwerk-remedyhomebuyers/30min" target="_blank" rel="noopener">Schedule a Call</a></li></ul><div style="margin-top:16px"><a href="#" onclick="showPage('offer');return false" class="btn btn-primary" style="font-size:13px;padding:10px 18px;width:100%;justify-content:center">Get My Offer →</a></div></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Remedy Home Buyers. All rights reserved. Sell Smart. Live Easy.</span><span><a href="#">Privacy Policy</a> · <a href="#">Terms</a></span></div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mobile-bar"><div class="mobile-bar-inner"><a href="tel:8884380201" class="mb-call">📞 Call Now</a><a href="#" onclick="showPage('offer');return false" class="mb-offer">Get Cash Offer</a></div></div>
+
+<!-- ═══════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════ -->
+<script>
+/* Graceful image fallback — hide broken images and show bg color */
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('img').forEach(function(img){
+    img.onerror=function(){this.style.display='none'};
+    if(img.complete && img.naturalWidth===0) img.style.display='none';
+  });
+});
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('[data-page]').forEach(a=>a.classList.toggle('active',a.getAttribute('data-page')===id));
+  document.getElementById('mobileMenu').classList.remove('open');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function nextStep(step){
+  document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('fstep'+step).classList.add('active');
+  for(let i=1;i<=3;i++)document.getElementById('prog'+i).classList.toggle('filled',i<=step);
+}
+function submitForm(){
+  document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('fstep-done').classList.add('active');
+  document.getElementById('formFooter').style.display='none';
+  document.querySelectorAll('.form-progress-bar').forEach(b=>b.classList.add('filled'));
+}
+function toggleFaq(btn){
+  const item=btn.parentElement;const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+</script>
+</body>
+</html>
