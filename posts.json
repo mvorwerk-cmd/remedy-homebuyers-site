@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "slug": "selling-inherited-property-sacramento",
+      "title": "How to Sell an Inherited Property in Sacramento: A Plain-English 2026 Guide",
+      "date": "2026-04-11",
+      "author": "Matt Vorwerk",
+      "excerpt": "Inherited a house in Sacramento and not sure what to do next? A step-by-step guide to probate, taxes, repairs, and your options for selling fast — without the legal jargon.",
+      "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80&fit=crop",
+      "tags": ["Inheritance", "Probate", "Sacramento"],
+      "readTime": "7 min read",
+      "draft": false
+    },
+    {
+      "slug": "facing-foreclosure-sacramento-options-2026",
+      "title": "Facing Foreclosure in Sacramento? Your Options Explained",
+      "date": "2026-04-14",
+      "author": "Matt Vorwerk",
+      "excerpt": "Behind on your mortgage in Sacramento? Learn the California foreclosure timeline, your rights under AB 2424, and five realistic options to protect your equity.",
+      "image": "https://images.unsplash.com/photo-1582407947092-34057a4d8c84?w=1200&q=80&fit=crop",
+      "tags": ["Foreclosure", "Pre-Foreclosure", "Sacramento"],
+      "readTime": "8 min read",
+      "draft": true
+    }
+  ]
+}
