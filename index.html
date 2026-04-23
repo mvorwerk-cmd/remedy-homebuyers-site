@@ -654,14 +654,17 @@ img[src*="unsplash"]{background:var(--light)}
 <div class="page" id="page-blog">
   <section class="page-hero">
     <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1400&q=75&fit=crop" alt="Home office" loading="lazy"></div>
-    <div class="page-hero-content container"><h1>Blog</h1><p>Tips, guides, and insights for homeowners</p></div>
+    <div class="page-hero-content container"><h1>Blog</h1><p>Tips, guides, and insights for homeowners in the Greater Sacramento area</p></div>
   </section>
   <section class="section">
     <div class="container">
-      <div class="blog-empty">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--border)" stroke-width="1.5" style="margin:0 auto 16px;display:block"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        <h3>Coming Soon</h3>
-        <p>We're working on helpful articles about selling your home, navigating foreclosure, understanding cash offers, and more. Check back soon!</p>
+      <div id="blogGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px">
+        <div id="blogLoading" style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted)">Loading articles…</div>
+      </div>
+      <div id="blogEmpty" style="display:none;text-align:center;padding:60px 20px">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--border)" stroke-width="1.5" style="margin:0 auto 16px;display:block"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <h3 style="font-size:22px;font-weight:700;color:var(--navy);margin-bottom:10px">Coming Soon</h3>
+        <p style="color:var(--text-muted);max-width:520px;margin:0 auto 20px">We're working on helpful articles about selling your home, navigating foreclosure, understanding cash offers, and more. Check back soon!</p>
         <a href="#" onclick="showPage('offer');return false" class="btn btn-primary">Get Your Cash Offer Now →</a>
       </div>
     </div>
@@ -763,6 +766,63 @@ function showPage(id){
   document.querySelectorAll('[data-page]').forEach(a=>a.classList.toggle('active',a.getAttribute('data-page')===id));
   document.getElementById('mobileMenu').classList.remove('open');
   window.scrollTo({top:0,behavior:'smooth'});
+  if(id === 'blog') loadBlogPosts();
+}
+
+/* ───────── Blog Posts Loader ─────────
+   Dynamically loads blog posts from /posts.json manifest.
+   Each post is a standalone HTML file at /posts/{slug}.html */
+let _blogLoaded = false;
+async function loadBlogPosts(){
+  if(_blogLoaded) return;
+  const grid = document.getElementById('blogGrid');
+  const empty = document.getElementById('blogEmpty');
+  try {
+    const res = await fetch('posts.json?v=' + Date.now(), {cache:'no-store'});
+    if(!res.ok) throw new Error('no manifest');
+    const data = await res.json();
+    const posts = (data.posts || []).filter(p => !p.draft);
+    // Sort newest first
+    posts.sort((a,b) => new Date(b.date) - new Date(a.date));
+    if(posts.length === 0){
+      grid.style.display = 'none';
+      empty.style.display = 'block';
+      _blogLoaded = true;
+      return;
+    }
+    grid.innerHTML = posts.map(renderBlogCard).join('');
+    _blogLoaded = true;
+  } catch(err){
+    // No posts.json yet — show empty state
+    grid.style.display = 'none';
+    empty.style.display = 'block';
+    _blogLoaded = true;
+  }
+}
+
+function renderBlogCard(p){
+  const date = new Date(p.date).toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+  const tags = (p.tags || []).slice(0,3).map(t => `<span style="background:var(--light);color:var(--navy);font-size:11px;font-weight:600;padding:4px 10px;border-radius:12px;text-transform:uppercase;letter-spacing:.5px">${escapeHtml(t)}</span>`).join(' ');
+  const img = p.image || 'https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&q=75&fit=crop';
+  const url = 'posts/' + encodeURIComponent(p.slug) + '.html';
+  return `
+    <a href="${url}" style="display:block;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow)'">
+      <div style="aspect-ratio:16/9;background:#eee;overflow:hidden"><img src="${escapeHtml(img)}" alt="${escapeHtml(p.title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="padding:22px">
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">${tags}</div>
+        <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin:0 0 10px;line-height:1.3">${escapeHtml(p.title)}</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.6;margin:0 0 14px">${escapeHtml(p.excerpt || '')}</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:12px">
+          <span>${date}</span>
+          <span>${escapeHtml(p.readTime || '5 min read')}</span>
+        </div>
+      </div>
+    </a>`;
+}
+
+function escapeHtml(s){
+  if(s == null) return '';
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 function nextStep(step){
