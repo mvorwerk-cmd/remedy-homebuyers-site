@@ -759,6 +759,17 @@ document.addEventListener('DOMContentLoaded',function(){
     img.onerror=function(){this.style.display='none'};
     if(img.complete && img.naturalWidth===0) img.style.display='none';
   });
+  // Hash routing: show the right page when arriving from a blog post or external link
+  var hash = window.location.hash.replace('#','');
+  if(hash && document.getElementById('page-'+hash)){
+    showPage(hash);
+  }
+});
+window.addEventListener('hashchange',function(){
+  var hash = window.location.hash.replace('#','');
+  if(hash && document.getElementById('page-'+hash)){
+    showPage(hash);
+  }
 });
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -767,6 +778,9 @@ function showPage(id){
   document.getElementById('mobileMenu').classList.remove('open');
   window.scrollTo({top:0,behavior:'smooth'});
   if(id === 'blog') loadBlogPosts();
+  // Update URL hash so links from blog posts work
+  if(id === 'home') history.replaceState(null,'',window.location.pathname);
+  else history.replaceState(null,'','#'+id);
 }
 
 /* ───────── Blog Posts Loader ─────────
