@@ -400,7 +400,12 @@ img[src*="unsplash"]{background:var(--light)}
             </div>
             <div class="form-step" id="fstep2">
               <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px;font-weight:500">Step 2 of 3</div>
-              <div class="form-field"><label>Property Address *</label><input type="text" name="property_address" placeholder="123 Main St, City, State" required></div>
+              <div class="form-field"><label>Street Address *</label><input type="text" name="property_street" placeholder="123 Main St" required></div>
+              <div class="form-field"><label>City *</label><input type="text" name="property_city" placeholder="City" required></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div class="form-field"><label>State *</label><select name="property_state" required><option value="">Select...</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option><option value="DC">DC</option></select></div>
+                <div class="form-field"><label>ZIP *</label><input type="text" name="property_zip" placeholder="12345" pattern="[0-9]{5}" maxlength="5" inputmode="numeric" required></div>
+              </div>
               <div class="form-field"><label>Property Condition</label><select name="property_condition"><option>Select condition...</option><option>Good - Minor cosmetic updates</option><option>Fair - Needs some work</option><option>Poor - Major repairs needed</option><option>Vacant / Damaged</option></select></div>
               <button type="button" class="form-submit" onclick="nextStep(3)">Next →</button>
               <div style="text-align:center;margin-top:8px"><a href="#" onclick="nextStep(1);return false" style="font-size:13px;color:var(--text-muted)">← Back</a></div>
@@ -659,7 +664,7 @@ img[src*="unsplash"]{background:var(--light)}
 <div class="page" id="page-blog">
   <section class="page-hero">
     <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1400&q=75&fit=crop" alt="Home office" loading="lazy"></div>
-    <div class="page-hero-content container"><h1>Blog</h1><p>Tips, guides, and insights for homeowners</p></div>
+    <div class="page-hero-content container"><h1>Blog</h1><p>Tips, guides, and insights for homeowners in the Greater Sacramento area</p></div>
   </section>
   <section class="section">
     <div class="container">
@@ -695,7 +700,12 @@ img[src*="unsplash"]{background:var(--light)}
               <div class="form-field"><label>Your Name *</label><input type="text" name="name" placeholder="Full name" required></div>
               <div class="form-field"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
               <div class="form-field"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(555) 555-5555" required></div>
-              <div class="form-field"><label>Property Address *</label><input type="text" name="property_address" placeholder="123 Main St, City, State, ZIP" required></div>
+              <div class="form-field"><label>Street Address *</label><input type="text" name="property_street" placeholder="123 Main St" required></div>
+              <div class="form-field"><label>City *</label><input type="text" name="property_city" placeholder="City" required></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div class="form-field"><label>State *</label><select name="property_state" required><option value="">Select...</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option><option value="DC">DC</option></select></div>
+                <div class="form-field"><label>ZIP *</label><input type="text" name="property_zip" placeholder="12345" pattern="[0-9]{5}" maxlength="5" inputmode="numeric" required></div>
+              </div>
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
                 <div class="form-field"><label>Condition</label><select name="property_condition"><option value="">Select...</option><option>Good</option><option>Fair</option><option>Poor</option><option>Vacant/Damaged</option></select></div>
                 <div class="form-field"><label>Timeline to Sell</label><select name="timeline"><option value="">Select...</option><option>ASAP</option><option>30 days</option><option>60 days</option><option>No rush</option></select></div>
@@ -878,7 +888,11 @@ function submitForm(formId){
   const data = {};
   fd.forEach((v,k)=>{ data[k] = v; });
 
-  const addr = parseAddress(data.property_address || '');
+  // Read structured address fields directly (form now collects them as separate inputs).
+  // Falls back to parsing data.property_address if a legacy single-field form is in use.
+  const addr = (data.property_street || data.property_city || data.property_state || data.property_zip)
+    ? { street:(data.property_street||'').trim(), city:(data.property_city||'').trim(), state:(data.property_state||'').toUpperCase().trim(), zip:(data.property_zip||'').trim() }
+    : parseAddress(data.property_address || '');
 
   // Payload uses Gravity Forms-style keys to match the existing Zap mapping
   const payload = {
