@@ -1,0 +1,102 @@
+{
+  "description": "Topic queue for automated weekly blog post generation. The weekly-blog-post scheduled task picks the next 'queued' topic each Monday. After 12 topics are consumed, the automation auto-generates the next 12 following the same patterns (distress topics + state law updates + how-to guides, balanced across major US metros).",
+  "categories": ["foreclosure", "probate", "divorce", "law-update", "how-to-sell", "code-violation", "tax-lien", "tenant-occupied", "market-overview"],
+  "topics": [
+    {
+      "slug": "stop-foreclosure-phoenix-az",
+      "title": "How to Stop Foreclosure in Phoenix, AZ: Your 2026 Options",
+      "city": "Phoenix",
+      "state": "AZ",
+      "category": "foreclosure",
+      "status": "queued"
+    },
+    {
+      "slug": "inherited-home-dallas-tx",
+      "title": "Selling an Inherited Home in Dallas: Texas Probate Made Simple",
+      "city": "Dallas",
+      "state": "TX",
+      "category": "probate",
+      "status": "queued"
+    },
+    {
+      "slug": "florida-foreclosure-laws-2026-tampa",
+      "title": "New Florida Foreclosure Laws in 2026: What Tampa Homeowners Need to Know",
+      "city": "Tampa",
+      "state": "FL",
+      "category": "law-update",
+      "status": "queued"
+    },
+    {
+      "slug": "inherited-house-atlanta-ga",
+      "title": "Inherited a House in Atlanta? A Step-by-Step Guide to Georgia Probate Sales",
+      "city": "Atlanta",
+      "state": "GA",
+      "category": "probate",
+      "status": "queued"
+    },
+    {
+      "slug": "pre-foreclosure-las-vegas-nv",
+      "title": "Pre-Foreclosure in Las Vegas: Nevada Homeowner Rights and Timelines",
+      "city": "Las Vegas",
+      "state": "NV",
+      "category": "foreclosure",
+      "status": "queued"
+    },
+    {
+      "slug": "divorce-denver-co",
+      "title": "Divorce and Your Denver Home: How Colorado Couples Split Real Estate in 2026",
+      "city": "Denver",
+      "state": "CO",
+      "category": "divorce",
+      "status": "queued"
+    },
+    {
+      "slug": "behind-mortgage-houston-tx",
+      "title": "Behind on Your Mortgage in Houston? Texas Foreclosure Process Explained",
+      "city": "Houston",
+      "state": "TX",
+      "category": "foreclosure",
+      "status": "queued"
+    },
+    {
+      "slug": "probate-property-charlotte-nc",
+      "title": "Selling a Probate Property in Charlotte: A Plain-English North Carolina Guide",
+      "city": "Charlotte",
+      "state": "NC",
+      "category": "probate",
+      "status": "queued"
+    },
+    {
+      "slug": "florida-disclosure-rules-2026-miami",
+      "title": "Florida's New Property Disclosure Rules 2026: What Miami Sellers Must Disclose",
+      "city": "Miami",
+      "state": "FL",
+      "category": "law-update",
+      "status": "queued"
+    },
+    {
+      "slug": "marital-home-nashville-tn",
+      "title": "Selling the Marital Home in Nashville: Tennessee Equity Split Rules",
+      "city": "Nashville",
+      "state": "TN",
+      "category": "divorce",
+      "status": "queued"
+    },
+    {
+      "slug": "distressed-property-san-antonio-tx",
+      "title": "How to Sell a Distressed Property in San Antonio Without a Realtor",
+      "city": "San Antonio",
+      "state": "TX",
+      "category": "how-to-sell",
+      "status": "queued"
+    },
+    {
+      "slug": "foreclosure-orlando-fl",
+      "title": "Foreclosure in Orlando: Florida's Judicial Process and 5 Ways Out",
+      "city": "Orlando",
+      "state": "FL",
+      "category": "foreclosure",
+      "status": "queued"
+    }
+  ]
+}
