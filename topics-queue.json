@@ -8,7 +8,7 @@
       "city": "Phoenix",
       "state": "AZ",
       "category": "foreclosure",
-      "status": "queued"
+      "status": "drafted"
     },
     {
       "slug": "inherited-home-dallas-tx",
