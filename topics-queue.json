@@ -1,6 +1,16 @@
 {
   "description": "Topic queue for automated weekly blog post generation. The weekly-blog-post scheduled task picks the next 'queued' topic each Monday. After 12 topics are consumed, the automation auto-generates the next 12 following the same patterns (distress topics + state law updates + how-to guides, balanced across major US metros).",
-  "categories": ["foreclosure", "probate", "divorce", "law-update", "how-to-sell", "code-violation", "tax-lien", "tenant-occupied", "market-overview"],
+  "categories": [
+    "foreclosure",
+    "probate",
+    "divorce",
+    "law-update",
+    "how-to-sell",
+    "code-violation",
+    "tax-lien",
+    "tenant-occupied",
+    "market-overview"
+  ],
   "topics": [
     {
       "slug": "stop-foreclosure-phoenix-az",
@@ -8,7 +18,7 @@
       "city": "Phoenix",
       "state": "AZ",
       "category": "foreclosure",
-      "status": "drafted"
+      "status": "published"
     },
     {
       "slug": "inherited-home-dallas-tx",
