@@ -1,0 +1,51 @@
+{
+  "description": "Verified-working Unsplash URLs for blog post header images, organized by topic category. The weekly-blog-post task MUST pick from these URLs only — DO NOT invent new Unsplash photo IDs. Every URL here is already used somewhere on remedyhomebuyers.net and confirmed to load.",
+  "fallback": "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=1200&q=80&fit=crop",
+  "by_category": {
+    "foreclosure": [
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&fit=crop"
+    ],
+    "probate": [
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&fit=crop"
+    ],
+    "divorce": [
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&fit=crop"
+    ],
+    "law-update": [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80&fit=crop"
+    ],
+    "how-to-sell": [
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&fit=crop"
+    ],
+    "code-violation": [
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&fit=crop"
+    ],
+    "tax-lien": [
+      "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80&fit=crop"
+    ],
+    "tenant-occupied": [
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&fit=crop"
+    ],
+    "market-overview": [
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&fit=crop"
+    ]
+  }
+}
