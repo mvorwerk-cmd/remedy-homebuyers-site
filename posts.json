@@ -7,7 +7,11 @@
       "author": "Matt Vorwerk",
       "excerpt": "Inherited a house in Sacramento and not sure what to do next? A step-by-step guide to probate, taxes, repairs, and your options for selling fast — without the legal jargon.",
       "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80&fit=crop",
-      "tags": ["Inheritance", "Probate", "Sacramento"],
+      "tags": [
+        "Inheritance",
+        "Probate",
+        "Sacramento"
+      ],
       "readTime": "7 min read",
       "draft": false
     },
@@ -18,7 +22,11 @@
       "author": "Matt Vorwerk",
       "excerpt": "Behind on your mortgage in Sacramento? Learn the California foreclosure timeline, your rights under AB 2424, and five realistic options to protect your equity.",
       "image": "https://images.unsplash.com/photo-1582407947092-34057a4d8c84?w=1200&q=80&fit=crop",
-      "tags": ["Foreclosure", "Pre-Foreclosure", "Sacramento"],
+      "tags": [
+        "Foreclosure",
+        "Pre-Foreclosure",
+        "Sacramento"
+      ],
       "readTime": "8 min read",
       "draft": true
     },
@@ -29,8 +37,188 @@
       "author": "Matt Vorwerk",
       "excerpt": "Behind on your mortgage in Phoenix? A plain-English walk through Arizona's 90-day foreclosure timeline, your right to reinstate, and five real ways out in 2026.",
       "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80&fit=crop",
-      "tags": ["Foreclosure", "Phoenix", "Arizona"],
+      "tags": [
+        "Foreclosure",
+        "Phoenix",
+        "Arizona"
+      ],
       "readTime": "8 min read",
+      "draft": false
+    },
+    {
+      "slug": "rehab",
+      "title": "4 Home Renovations That Add the Most Value to Your Property",
+      "date": "2026-05-12",
+      "author": "Matt Vorwerk",
+      "excerpt": "When you're preparing to sell a vacant property, knowing where to invest your renovation dollars can make all the difference. With the right upgrades, you can…",
+      "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&fit=crop",
+      "tags": [
+        "Renovations",
+        "Selling",
+        "ROI"
+      ],
+      "readTime": "3 min read",
+      "url": "/rehab",
+      "draft": false
+    },
+    {
+      "slug": "eap",
+      "title": "Top Price With our Creative Finance Program",
+      "date": "2026-05-12",
+      "author": "Matt Vorwerk",
+      "excerpt": "At Remedy Home Buyers , we understand that selling your house is a significant decision that deserves careful consideration. That's why we're here to introduce…",
+      "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80&fit=crop",
+      "tags": [
+        "Creative Finance",
+        "Selling",
+        "Top Price"
+      ],
+      "readTime": "4 min read",
+      "url": "/eap",
+      "draft": false
+    },
+    {
+      "slug": "stopforeclosure",
+      "title": "6 Little-Known Ways To Stop Foreclosure In Its Tracks",
+      "date": "2026-05-12",
+      "author": "Matt Vorwerk",
+      "excerpt": "Life happens. And everyone goes through a time in life when there’s a hardship that might cause financial obstacles. Whether you’ve hit a “bump” on the road…",
+      "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80&fit=crop",
+      "tags": [
+        "Foreclosure",
+        "Pre-Foreclosure",
+        "Options"
+      ],
+      "readTime": "6 min read",
+      "url": "/stopforeclosure",
+      "draft": false
+    },
+    {
+      "slug": "badagent",
+      "title": "How to Spot a Good Real Estate Agent (and Avoid the Bad Ones)",
+      "date": "2026-05-12",
+      "author": "Matt Vorwerk",
+      "excerpt": "Selling your home is a big decision, and choosing the right real estate agent can make all the difference. If you’re thinking about listing your property, or…",
+      "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80&fit=crop",
+      "tags": [
+        "Real Estate Agents",
+        "Selling",
+        "Tips"
+      ],
+      "readTime": "5 min read",
+      "url": "/badagent",
+      "draft": false
+    },
+    {
+      "slug": "probate-guide",
+      "title": "The Probate Process Simplified: A Homeowner's Guide",
+      "date": "2026-05-12",
+      "author": "Matt Vorwerk",
+      "excerpt": "If you've recently come into possession of a property because of a loved one's passing, you might be feeling overwhelmed. The word 'probate' probably keeps…",
+      "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80&fit=crop",
+      "tags": [
+        "Probate",
+        "Inheritance",
+        "Guide"
+      ],
+      "readTime": "6 min read",
+      "url": "/probate-guide",
+      "draft": false
+    },
+    {
+      "slug": "bypass-probate",
+      "title": "How to Bypass Probate",
+      "date": "2026-05-12",
+      "author": "Matt Vorwerk",
+      "excerpt": "When you inherit property after the passing of a loved one, the probate process might be the last thing you'd want to navigate, especially if you're unfamiliar…",
+      "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80&fit=crop",
+      "tags": [
+        "Probate",
+        "Estate Planning",
+        "Inheritance"
+      ],
+      "readTime": "4 min read",
+      "url": "/bypass-probate",
+      "draft": false
+    },
+    {
+      "slug": "probate-sale",
+      "title": "Selling a property in probate",
+      "date": "2026-05-12",
+      "author": "Matt Vorwerk",
+      "excerpt": "If you’re fully on board selling a property or your on the fence of whether or not to do it… … let’s go ahead and unravel this process to make your decision…",
+      "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&fit=crop",
+      "tags": [
+        "Probate",
+        "Selling",
+        "Inheritance"
+      ],
+      "readTime": "6 min read",
+      "url": "/probate-sale",
+      "draft": false
+    },
+    {
+      "slug": "probate-rent",
+      "title": "How to rent out an inherited property",
+      "date": "2026-05-12",
+      "author": "Matt Vorwerk",
+      "excerpt": "Alright so you’re excited about being a new landlord. You just inherited property… or you’re about while your property is in Probate (see our homeowners guide…",
+      "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80&fit=crop",
+      "tags": [
+        "Probate",
+        "Rentals",
+        "Landlord"
+      ],
+      "readTime": "9 min read",
+      "url": "/probate-rent",
+      "draft": false
+    },
+    {
+      "slug": "repair",
+      "title": "What Home Repairs Give You The Most Value…",
+      "date": "2026-05-12",
+      "author": "Matt Vorwerk",
+      "excerpt": "Want to sell your property for top dollar? House in shambles but you want to sell? Well, Remedy Home Buyers is going to give you the low-down on making repairs…",
+      "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80&fit=crop",
+      "tags": [
+        "Repairs",
+        "Renovations",
+        "Selling"
+      ],
+      "readTime": "7 min read",
+      "url": "/repair",
+      "draft": false
+    },
+    {
+      "slug": "tenant",
+      "title": "How to sell a house quickly and hassle-free with tenants",
+      "date": "2026-05-12",
+      "author": "Matt Vorwerk",
+      "excerpt": "You’ve spent years collecting rent, and now you want to sell that property. But there’s a problem! The tenants are still inside and you don’t know what to do…",
+      "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80&fit=crop",
+      "tags": [
+        "Tenant-Occupied",
+        "Selling",
+        "Landlord"
+      ],
+      "readTime": "4 min read",
+      "url": "/tenant",
+      "draft": false
+    },
+    {
+      "slug": "vacant",
+      "title": "How to sell a vacant house for top dollar",
+      "date": "2026-05-12",
+      "author": "Matt Vorwerk",
+      "excerpt": "Do you have an unwanted property sitting vacant, “deteriorating” away? Maybe windows have been smashed, the interior trashed, and code enforcement notices are…",
+      "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80&fit=crop",
+      "tags": [
+        "Vacant Property",
+        "Code Violations",
+        "Selling"
+      ],
+      "readTime": "4 min read",
+      "url": "/vacant",
       "draft": false
     }
   ]
