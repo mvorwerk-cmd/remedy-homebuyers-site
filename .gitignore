@@ -1,0 +1,47 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+.cache/
+
+# Node (in case you ever add tooling)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python (used by local helper scripts)
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# Internal workflow files — generated locally, not for deploy
+drip-articles-manifest.json
+
+# Environment / secrets
+.env
+.env.local
+*.pem
+*.key
+.github-token
