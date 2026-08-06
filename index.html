@@ -393,6 +393,10 @@ img[src*="unsplash"]{background:var(--light)}
           <div class="form-card-sub">No obligation. Takes about 60 seconds.</div>
           <div class="form-progress"><div class="form-progress-bar filled" id="prog1"></div><div class="form-progress-bar" id="prog2"></div><div class="form-progress-bar" id="prog3"></div></div>
           <form id="heroForm" onsubmit="return false">
+            <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden">
+              <label for="hero_website">Leave this field empty</label>
+              <input type="text" name="website" id="hero_website" tabindex="-1" autocomplete="off">
+            </div>
             <div class="form-step active" id="fstep1">
               <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px;font-weight:500">Step 1 of 3</div>
               <div class="form-field"><label>Name *</label><input type="text" name="name" placeholder="Your full name" required></div>
@@ -552,7 +556,7 @@ img[src*="unsplash"]{background:var(--light)}
       <h2 style="font-size:32px;font-weight:800;margin-bottom:12px">Ready to Sell Your House Fast?</h2>
       <p style="color:rgba(255,255,255,.85);font-size:17px;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto">Get your free, no-obligation cash offer today. No repairs. No fees. No hassle.</p>
       <a href="#" onclick="showPage('offer');return false" class="btn btn-white" style="margin:0 6px 10px">Get My Cash Offer →</a>
-      <a href="https://calendly.com/matt-vorwerk-remedyhomebuyers/30min" target="_blank" rel="noopener" class="btn" style="border:2px solid rgba(255,255,255,.4);color:white;margin:0 6px 10px">📅 Schedule a Call</a>
+      <a href="https://calendly.com/justin-remedyhomebuyers/30min" target="_blank" rel="noopener" class="btn" style="border:2px solid rgba(255,255,255,.4);color:white;margin:0 6px 10px">📅 Schedule a Call</a>
     </div>
   </section>
 </div>
@@ -592,7 +596,7 @@ img[src*="unsplash"]{background:var(--light)}
   </section>
   <section class="cta-photo">
     <div class="cta-photo-bg"><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1400&q=75&fit=crop" alt="Home exterior" loading="lazy"></div>
-    <div class="cta-photo-content"><h2 style="font-size:30px;font-weight:800;margin-bottom:12px">See What Your House Is Worth</h2><p style="color:rgba(255,255,255,.8);font-size:16px;margin-bottom:24px">Get a fair, transparent cash offer with zero obligation.</p><a href="#" onclick="showPage('offer');return false" class="btn btn-white">Get My Cash Offer →</a> <a href="https://calendly.com/matt-vorwerk-remedyhomebuyers/30min" target="_blank" rel="noopener" class="btn" style="border:2px solid rgba(255,255,255,.4);color:white">📅 Schedule a Call</a></div>
+    <div class="cta-photo-content"><h2 style="font-size:30px;font-weight:800;margin-bottom:12px">See What Your House Is Worth</h2><p style="color:rgba(255,255,255,.8);font-size:16px;margin-bottom:24px">Get a fair, transparent cash offer with zero obligation.</p><a href="#" onclick="showPage('offer');return false" class="btn btn-white">Get My Cash Offer →</a> <a href="https://calendly.com/justin-remedyhomebuyers/30min" target="_blank" rel="noopener" class="btn" style="border:2px solid rgba(255,255,255,.4);color:white">📅 Schedule a Call</a></div>
   </section>
 </div>
 
@@ -699,6 +703,10 @@ img[src*="unsplash"]{background:var(--light)}
           <div class="form-card" style="box-shadow:var(--shadow-lg)">
             <div class="form-card-title" style="text-align:left;font-size:20px;margin-bottom:16px">Tell Us About Your Property</div>
             <form id="offerForm" onsubmit="return false">
+              <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden">
+                <label for="offer_website">Leave this field empty</label>
+                <input type="text" name="website" id="offer_website" tabindex="-1" autocomplete="off">
+              </div>
               <div class="form-field"><label>Your Name *</label><input type="text" name="name" placeholder="Full name" required></div>
               <div class="form-field"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
               <div class="form-field"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(555) 555-5555" required></div>
@@ -729,7 +737,7 @@ img[src*="unsplash"]{background:var(--light)}
             <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px">Prefer to talk?</div>
             <a href="tel:8884380201" style="display:flex;align-items:center;gap:8px;font-size:20px;font-weight:700;color:var(--green)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(888) 438-0201</a>
             <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Call or text anytime</div>
-            <a href="https://calendly.com/matt-vorwerk-remedyhomebuyers/30min" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:14px;font-weight:600;color:var(--green);padding:8px 16px;border:2px solid var(--green);border-radius:var(--radius);transition:.2s">📅 Schedule a Call</a>
+            <a href="https://calendly.com/justin-remedyhomebuyers/30min" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:14px;font-weight:600;color:var(--green);padding:8px 16px;border:2px solid var(--green);border-radius:var(--radius);transition:.2s">📅 Schedule a Call</a>
           </div>
           <!-- Testimonial mini -->
           <div style="margin-top:24px;background:var(--warm);border-radius:var(--radius-lg);padding:20px;border:1px solid var(--border)">
@@ -757,7 +765,7 @@ img[src*="unsplash"]{background:var(--light)}
       </div>
       <div><h4>Quick Links</h4><ul><li><a href="#" onclick="showPage('home');return false">Home</a></li><li><a href="#" onclick="showPage('how');return false">How It Works</a></li><li><a href="#" onclick="showPage('success');return false">Success Stories</a></li><li><a href="#" onclick="showPage('faq');return false">FAQ</a></li><li><a href="#" onclick="showPage('blog');return false">Blog</a></li></ul></div>
       <div><h4>Service Areas</h4><ul><li><a href="#">Sacramento County</a></li><li><a href="#">Placer County</a></li><li><a href="#">El Dorado County</a></li><li><a href="#">Yolo County</a></li><li><a href="#">Nationwide</a></li></ul></div>
-      <div><h4>Get Started</h4><ul><li><a href="#" onclick="showPage('offer');return false">Get a Cash Offer</a></li><li><a href="tel:8884380201">Call Us</a></li><li><a href="sms:8884380201">Send a Text</a></li><li><a href="https://calendly.com/matt-vorwerk-remedyhomebuyers/30min" target="_blank" rel="noopener">Schedule a Call</a></li></ul><div style="margin-top:16px"><a href="#" onclick="showPage('offer');return false" class="btn btn-primary" style="font-size:13px;padding:10px 18px;width:100%;justify-content:center">Get My Offer →</a></div></div>
+      <div><h4>Get Started</h4><ul><li><a href="#" onclick="showPage('offer');return false">Get a Cash Offer</a></li><li><a href="tel:8884380201">Call Us</a></li><li><a href="sms:8884380201">Send a Text</a></li><li><a href="https://calendly.com/justin-remedyhomebuyers/30min" target="_blank" rel="noopener">Schedule a Call</a></li></ul><div style="margin-top:16px"><a href="#" onclick="showPage('offer');return false" class="btn btn-primary" style="font-size:13px;padding:10px 18px;width:100%;justify-content:center">Get My Offer →</a></div></div>
     </div>
     <div class="footer-bottom"><span>&copy; 2026 Remedy Home Buyers. All rights reserved. Sell Smart. Live Easy.</span><span><a href="#">Privacy Policy</a> · <a href="#">Terms</a></span></div>
   </div>
@@ -882,6 +890,10 @@ function parseAddress(addr){
 function submitForm(formId){
   const form = document.getElementById(formId);
   if(!form) return;
+  // Honeypot — if the hidden "website" field is filled, this is almost certainly a bot.
+  // Silently show "success" so the bot doesn't retry, but never fire the webhook.
+  const honeypot = form.querySelector('input[name="website"]');
+  if(honeypot && honeypot.value){ showFormSuccess(formId); return; }
   // Basic HTML5 validation
   if(!form.checkValidity()){ form.reportValidity(); return; }
 
