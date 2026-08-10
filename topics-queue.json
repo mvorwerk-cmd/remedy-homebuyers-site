@@ -107,6 +107,38 @@
       "state": "FL",
       "category": "foreclosure",
       "status": "drafted"
+    },
+    {
+      "slug": "foreclosure-columbus-oh",
+      "title": "Facing Foreclosure in Columbus, OH: Your 2026 Options",
+      "city": "Columbus",
+      "state": "OH",
+      "category": "foreclosure",
+      "status": "drafted"
+    },
+    {
+      "slug": "inherited-house-indianapolis-in",
+      "title": "Inherited a House in Indianapolis? A Plain-English Guide to Indiana Probate",
+      "city": "Indianapolis",
+      "state": "IN",
+      "category": "probate",
+      "status": "queued"
+    },
+    {
+      "slug": "divorce-minneapolis-mn",
+      "title": "Divorce and Your Minneapolis Home: How Minnesota Splits Real Estate",
+      "city": "Minneapolis",
+      "state": "MN",
+      "category": "divorce",
+      "status": "queued"
+    },
+    {
+      "slug": "sell-distressed-house-kansas-city-mo",
+      "title": "How to Sell a Distressed House in Kansas City Without a Realtor",
+      "city": "Kansas City",
+      "state": "MO",
+      "category": "how-to-sell",
+      "status": "queued"
     }
   ]
 }
