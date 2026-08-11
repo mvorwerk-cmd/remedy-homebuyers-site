@@ -97,6 +97,24 @@ If you don't click either button, the draft sits indefinitely with `draft: true`
 | `posts.json` | Manual edit only for drafts you want to publish/discard outside the automation flow | Rare |
 | `index.html` | Site structure, nav, hero, footer, forms | When changing the homepage SPA |
 
+## Meta (Facebook) Pixel
+
+**Pixel ID:** `38058926033723355` (active — installed across `index.html` and all 12 vanity-path pages)
+
+Events tracked:
+- **PageView** — fires on every route
+- **Lead** — fires on successful form submission (hero form + offer form) with payload `{content_name: <formId>, source: 'remedyhomebuyers.net'}`. Honeypot bot submissions do NOT fire it.
+
+### For the FB ads specialist
+
+Recommended follow-ups after being invited to the repo:
+
+1. Verify events in [Meta Events Manager → Test Events](https://business.facebook.com/events_manager). Load `remedyhomebuyers.net`, submit the hero form with a test address, confirm `PageView` + `Lead` fire.
+2. Complete **Domain Verification** for `remedyhomebuyers.net` in Meta Business Manager → Brand Safety.
+3. Set up **Aggregated Event Measurement** — prioritize `Lead` as the highest-value event for iOS 14+ attribution.
+4. Optional: add **Conversions API** (server-side) by extending the existing Zap that pushes to REsimpli to also POST to Meta's CAPI endpoint. This recovers lost attribution from ad blockers and iOS.
+5. If you want richer events (`ViewContent` on blog posts, `InitiateCheckout` on "Get Offer" click), the pixel snippet is in `<head>` of `index.html` — add `fbq('track', ...)` calls where relevant.
+
 ## Vanity Redirect URLs
 
 | URL | Redirects to |

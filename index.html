@@ -7,6 +7,40 @@
 <meta name="description" content="Remedy Home Buyers purchases homes nationwide for cash. No realtors, no fees, no repairs. Get your free cash offer today. Call (888) 438-0201.">
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
+
+<!-- ═══════════════════════════════════════════
+     META (FACEBOOK) PIXEL
+     ═══════════════════════════════════════════
+     Fires PageView on every route and a "Lead" event on successful form
+     submission (see submitForm() near end of file). Domain verification and
+     Conversions API should be configured in Meta Business Manager.
+
+     🔴 SETUP FOR FB ADS SPECIALIST:
+        1. Get the numeric Pixel ID from Meta Events Manager
+           (https://business.facebook.com/events_manager → your pixel → top of dashboard).
+        2. Find/replace 38058926033723355 with that ID.
+           There are TWO occurrences below plus one in each of the 12 vanity paths
+           (/rehab/, /eap/, /stopforeclosure/, /badagent/, /probate-guide/,
+            /bypass-probate/, /probate-sale/, /probate-rent/, /repair/,
+            /tenant/, /vacant/, /equity/).
+        3. Verify in Meta Events Manager → Test Events tab.
+════════════════════════════════════════════ -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '38058926033723355');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=38058926033723355&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -938,10 +972,13 @@ function submitForm(formId){
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   }).then(()=>{
+    // Fire Meta Pixel Lead event so FB ads optimize for actual conversions
+    if(typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: formId, source: 'remedyhomebuyers.net'});
     showFormSuccess(formId);
   }).catch(()=>{
     // Even on network error we show success so the user isn't blocked;
     // Zapier usually still receives the payload with no-cors mode.
+    if(typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: formId, source: 'remedyhomebuyers.net'});
     showFormSuccess(formId);
   });
 }
