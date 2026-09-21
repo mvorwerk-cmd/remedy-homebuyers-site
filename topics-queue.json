@@ -139,6 +139,38 @@
       "state": "MO",
       "category": "how-to-sell",
       "status": "published"
+    },
+    {
+      "slug": "foreclosure-detroit-mi",
+      "title": "Facing Foreclosure in Detroit, MI: Your 2026 Options",
+      "city": "Detroit",
+      "state": "MI",
+      "category": "foreclosure",
+      "status": "drafted"
+    },
+    {
+      "slug": "inherited-house-philadelphia-pa",
+      "title": "Inherited a House in Philadelphia? A Plain-English Guide to PA Probate",
+      "city": "Philadelphia",
+      "state": "PA",
+      "category": "probate",
+      "status": "queued"
+    },
+    {
+      "slug": "divorce-seattle-wa",
+      "title": "Divorce and Your Seattle Home: How Washington Splits Real Estate",
+      "city": "Seattle",
+      "state": "WA",
+      "category": "divorce",
+      "status": "queued"
+    },
+    {
+      "slug": "sell-distressed-house-cleveland-oh",
+      "title": "How to Sell a Distressed House in Cleveland Without a Realtor",
+      "city": "Cleveland",
+      "state": "OH",
+      "category": "how-to-sell",
+      "status": "queued"
     }
   ]
 }
