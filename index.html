@@ -454,6 +454,15 @@ img[src*="unsplash"]{background:var(--light)}
               <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px;font-weight:500">Step 3 of 3</div>
               <div class="form-field"><label>How quickly do you need to sell?</label><select name="timeline"><option>Select timeline...</option><option>ASAP (within 7 days)</option><option>Within 30 days</option><option>Within 60 days</option><option>No rush, just exploring</option></select></div>
               <div class="form-field"><label>Anything else we should know?</label><textarea name="notes" rows="3" placeholder="Tell us about your situation (optional)..." style="resize:vertical"></textarea></div>
+              <!-- TCPA / SMS opt-in — required by Twilio for toll-free verification. Do not remove. -->
+              <div style="margin:14px 0 10px;display:flex;gap:8px;align-items:flex-start">
+                <input type="checkbox" name="consent_terms" id="hero_consent_terms" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--green)">
+                <label for="hero_consent_terms" style="font-size:12.5px;line-height:1.5;color:var(--text-light);font-weight:400;margin:0">I agree to the <a href="/terms" target="_blank" style="color:var(--green);text-decoration:underline">Terms &amp; Conditions</a> and <a href="/privacy" target="_blank" style="color:var(--green);text-decoration:underline">Privacy Policy</a>.</label>
+              </div>
+              <div style="margin:0 0 14px;display:flex;gap:8px;align-items:flex-start">
+                <input type="checkbox" name="consent_sms" id="hero_consent_sms" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--green)">
+                <label for="hero_consent_sms" style="font-size:12.5px;line-height:1.5;color:var(--text-light);font-weight:400;margin:0">I agree to receive marketing messaging from Remedy Home Buyers at the phone number provided above. I understand I will receive 2 messages a month, data rates may apply, reply STOP to opt out.</label>
+              </div>
               <button type="button" class="form-submit" onclick="submitForm('heroForm')">Get My Cash Offer →</button>
               <div style="text-align:center;margin-top:8px"><a href="#" onclick="nextStep(2);return false" style="font-size:13px;color:var(--text-muted)">← Back</a></div>
             </div>
@@ -755,6 +764,15 @@ img[src*="unsplash"]{background:var(--light)}
                 <div class="form-field"><label>Timeline to Sell</label><select name="timeline"><option value="">Select...</option><option>ASAP</option><option>30 days</option><option>60 days</option><option>No rush</option></select></div>
               </div>
               <div class="form-field"><label>Tell Us More (optional)</label><textarea name="notes" rows="3" placeholder="Describe your situation..." style="resize:vertical"></textarea></div>
+              <!-- TCPA / SMS opt-in — required by Twilio for toll-free verification. Do not remove. -->
+              <div style="margin:14px 0 10px;display:flex;gap:8px;align-items:flex-start">
+                <input type="checkbox" name="consent_terms" id="offer_consent_terms" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--green)">
+                <label for="offer_consent_terms" style="font-size:13px;line-height:1.5;color:var(--text-light);font-weight:400;margin:0">I agree to the <a href="/terms" target="_blank" style="color:var(--green);text-decoration:underline">Terms &amp; Conditions</a> and <a href="/privacy" target="_blank" style="color:var(--green);text-decoration:underline">Privacy Policy</a>.</label>
+              </div>
+              <div style="margin:0 0 14px;display:flex;gap:8px;align-items:flex-start">
+                <input type="checkbox" name="consent_sms" id="offer_consent_sms" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--green)">
+                <label for="offer_consent_sms" style="font-size:13px;line-height:1.5;color:var(--text-light);font-weight:400;margin:0">I agree to receive marketing messaging from Remedy Home Buyers at the phone number provided above. I understand I will receive 2 messages a month, data rates may apply, reply STOP to opt out.</label>
+              </div>
               <div id="offerFormMessage" style="display:none;padding:14px;border-radius:10px;background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0;margin-bottom:12px;font-size:14px;font-weight:600"></div>
               <button type="submit" class="form-submit" style="font-size:17px;padding:16px" onclick="submitForm('offerForm')">Get My Cash Offer →</button>
             </form>
@@ -801,7 +819,7 @@ img[src*="unsplash"]{background:var(--light)}
       <div><h4>Service Areas</h4><ul><li><a href="#">Sacramento County</a></li><li><a href="#">Placer County</a></li><li><a href="#">El Dorado County</a></li><li><a href="#">Yolo County</a></li><li><a href="#">Nationwide</a></li></ul></div>
       <div><h4>Get Started</h4><ul><li><a href="#" onclick="showPage('offer');return false">Get a Cash Offer</a></li><li><a href="tel:8884380201">Call Us</a></li><li><a href="sms:8884380201">Send a Text</a></li><li><a href="https://calendly.com/justin-remedyhomebuyers/30min" target="_blank" rel="noopener">Schedule a Call</a></li></ul><div style="margin-top:16px"><a href="#" onclick="showPage('offer');return false" class="btn btn-primary" style="font-size:13px;padding:10px 18px;width:100%;justify-content:center">Get My Offer →</a></div></div>
     </div>
-    <div class="footer-bottom"><span>&copy; 2026 Remedy Home Buyers. All rights reserved. Sell Smart. Live Easy.</span><span><a href="#">Privacy Policy</a> · <a href="#">Terms</a></span></div>
+    <div class="footer-bottom"><span>&copy; 2026 Remedy Home Buyers. All rights reserved. Sell Smart. Live Easy.</span><span><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms &amp; Conditions</a></span></div>
   </div>
 </footer>
 
@@ -958,7 +976,12 @@ function submitForm(formId){
     source: 'remedyhomebuyers.net',
     form: formId,
     submitted_at: new Date().toISOString(),
-    page_url: window.location.href
+    page_url: window.location.href,
+    // TCPA consent audit trail — both must be true or form would have blocked submission.
+    // Store these on the CRM lead record for compliance evidence.
+    consent_terms: data.consent_terms === 'on',
+    consent_sms: data.consent_sms === 'on',
+    consent_sms_language: 'I agree to receive marketing messaging from Remedy Home Buyers at the phone number provided above. I understand I will receive 2 messages a month, data rates may apply, reply STOP to opt out.'
   };
 
   // Disable submit buttons while sending
