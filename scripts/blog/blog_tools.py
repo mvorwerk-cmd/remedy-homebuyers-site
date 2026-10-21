@@ -114,6 +114,11 @@ def check(slug):
         external = re.findall(r'href="https?://(?!remedyhomebuyers\.net)[^"]+"', body.group(1))
         want(len(external) >= 2, f"only {len(external)} outbound source citations (GEO: cite statutes/.gov, aim 2+)")
         need("(888) 438-0201" in src or "8884380201" in src, "phone number missing from CTA")
+    images = load("topic-images.json")
+    verified = set(sum(images["by_category"].values(), [])) | {images["fallback"]}
+    hero = re.search(r'property="og:image" content="([^"]*)"', src)
+    need(not hero or hero.group(1) in verified,
+         "header image is not in topic-images.json (unverified images can 404 on the blog)")
     for img in re.findall(r"<img[^>]*>", src):
         if 'alt="' not in img or 'alt=""' in img:
             errors.append(f"image missing alt text: {img[:80]}")
