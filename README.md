@@ -78,9 +78,10 @@ Runs as two scheduled Claude Code cloud tasks (no laptop needs to be on). Full r
 
 ### Action processor — hourly
 The buttons are one click: they open `/review/` on the site, which posts to the private Zapier
-workflow **blog-review-buttons**; it emails `BLOG-ACTION: APPROVE|REJECT {slug} r{N}` (with a
-one-time token checked against `review_hash` in `posts.json`) to Matt's inbox for the processor.
-- `APPROVE` → `scripts/blog/blog_tools.py publish` flips `draft: false`, updates `sitemap.xml` and `llms.txt`, pushes to `main`, emails a confirmation
+workflow **blog-review-buttons** (one-time token checked against `review_hash` in `posts.json`).
+- **Approve** → Zapier publishes straight to `main` via GitHub and emails "Published"; live in ~2 min
+- **Reject** → Zapier emails `BLOG-ACTION: REJECT {slug} r{N}` with Matt's notes to the hourly processor
+- `APPROVE` (only if Zapier's direct publish failed) → `scripts/blog/blog_tools.py publish`, push to `main`, confirmation email
 - `REJECT` → rewrites the post using Matt's notes, bumps the revision, emails the new draft — repeats until approved
 
 ### Helper script

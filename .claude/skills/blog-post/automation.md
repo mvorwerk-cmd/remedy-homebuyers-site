@@ -14,8 +14,11 @@ The approval email (built by `python3 scripts/blog/blog_tools.py email <slug>`) 
 buttons that open `https://remedyhomebuyers.net/review/` (`review/index.html`):
 
 - **✅ Approve & Publish**: the page immediately posts the click to the Zapier workflow
-  `blog-review-buttons`, which emails `BLOG-ACTION: APPROVE <slug> r<N>` (body `token: <hex>`)
-  from help@remedyhomebuyers.net to Matt's inbox.
+  `blog-review-buttons`, which verifies the token against `review_hash` and **publishes directly**
+  to `main` through the GitHub API (same edits as `blog_tools.py publish`: posts.json,
+  topics-queue.json, the post's noindex/dates, sitemap.xml, llms.txt), then emails Matt
+  "Published: <title>". Only if GitHub fails does it fall back to emailing
+  `BLOG-ACTION: APPROVE <slug> r<N>` (from help@remedyhomebuyers.net) for Task 2 below.
 - **❌ Reject & Rewrite**: the page shows a feedback box; on Send the same workflow emails
   `BLOG-ACTION: REJECT <slug> r<N>` with the token and Matt's feedback.
 
@@ -43,7 +46,7 @@ button in an old email never publishes an outdated version.
    If any facts couldn't be verified (see SKILL.md research step), insert a short
    "Please double-check" list right after the first `<h2>` of `htmlBody` before sending.
 
-## Task 2: process actions (hourly)
+## Task 2: process actions (hourly — rejections and fallback approvals)
 
 1. Sync `main` as above.
 2. Make sure the Gmail label `blog-processed` exists (`list_labels`, else `create_label`).
