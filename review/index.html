@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Blog Review | Remedy Home Buyers</title>
+<link rel="icon" href="../logo.png">
+<style>
+  :root{--navy:#0a2540;--green:#0a6b43;--red:#b42318;--light:#f7f9fb;--border:#e3e8ef;--text:#1a2332;--muted:#5a6675}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--text);background:var(--light);line-height:1.6}
+  .card{max-width:560px;margin:48px auto;background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 28px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+  .logo{display:flex;align-items:center;gap:10px;color:var(--navy);font-weight:800;margin-bottom:24px}
+  .logo img{width:36px;height:36px;border-radius:50%}
+  h1{color:var(--navy);font-size:24px;margin:0 0 8px}
+  p{margin:0 0 16px;color:var(--muted)}
+  .slug{font-family:ui-monospace,Menlo,monospace;background:var(--light);padding:2px 6px;border-radius:6px;color:var(--navy)}
+  textarea{width:100%;min-height:160px;border:1px solid var(--border);border-radius:10px;padding:12px;font:inherit;margin:0 0 16px}
+  button{background:var(--red);color:#fff;border:0;border-radius:10px;padding:14px 28px;font-size:16px;font-weight:700;cursor:pointer}
+  button:disabled{opacity:.6;cursor:default}
+  a{color:var(--green);font-weight:600}
+  @media (max-width:600px){.card{margin:16px;padding:24px 18px}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo"><img src="../logo.png" alt="Remedy Home Buyers"> Remedy Home Buyers</div>
+  <div id="view"><h1>Loading…</h1></div>
+</div>
+<script>
+/* Approve/Reject landing page for blog draft emails.
+   Posts the click to the blog-review-buttons Zapier workflow, which emails
+   a BLOG-ACTION message that the hourly Claude processor acts on. */
+const REVIEW_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/17291088/CSg9MPLU2a3c2bNLr/';
+
+const q = new URLSearchParams(location.search);
+const action = (q.get('a') || '').toLowerCase();
+const slug = q.get('s') || '';
+const rev = q.get('r') || '';
+const token = q.get('t') || '';
+const view = document.getElementById('view');
+const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const preview = `../posts/${encodeURIComponent(slug)}.html`;
+
+function send(fields){
+  const body = new URLSearchParams({action, slug, rev, token, ...fields});
+  return fetch(REVIEW_WEBHOOK_URL, {method:'POST', mode:'no-cors', body});
+}
+
+if (!/^(approve|reject)$/.test(action) || !/^[a-z0-9-]+$/.test(slug) || !/^\d+$/.test(rev) || !/^[0-9a-f]{32}$/.test(token)) {
+  view.innerHTML = '<h1>Link not recognized</h1><p>This review link is incomplete. Use the buttons in the latest draft email.</p>';
+} else if (action === 'approve') {
+  view.innerHTML = `<h1>Sending approval…</h1><p><span class="slug">${esc(slug)}</span> (revision ${esc(rev)})</p>`;
+  send({}).then(() => {
+    view.innerHTML = `<h1>✅ Approved</h1>
+      <p><span class="slug">${esc(slug)}</span> (revision ${esc(rev)}) will be published to the blog within about an hour. You'll get a confirmation email when it's live.</p>
+      <p>You can close this tab.</p>`;
+  }).catch(() => {
+    view.innerHTML = '<h1>Something went wrong</h1><p>The approval could not be sent. Check your connection and reload this page to try again.</p>';
+  });
+} else {
+  view.innerHTML = `<h1>❌ Reject &amp; rewrite</h1>
+    <p>What should change in <span class="slug">${esc(slug)}</span> (revision ${esc(rev)})? <a href="${preview}" target="_blank" rel="noopener">Re-read the draft</a></p>
+    <textarea id="fb" placeholder="e.g. Too long — cut the tax section, add a paragraph on what happens if a spouse refuses to sell."></textarea>
+    <button id="go">Send feedback</button>`;
+  document.getElementById('go').onclick = () => {
+    const btn = document.getElementById('go');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    send({feedback: document.getElementById('fb').value}).then(() => {
+      view.innerHTML = `<h1>Feedback sent</h1><p>A rewritten version of <span class="slug">${esc(slug)}</span> will be emailed to you for approval, usually within an hour or two.</p><p>You can close this tab.</p>`;
+    }).catch(() => { btn.disabled = false; btn.textContent = 'Send feedback'; alert('Could not send. Please try again.'); });
+  };
+}
+</script>
+</body>
+</html>

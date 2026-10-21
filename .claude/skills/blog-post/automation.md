@@ -10,15 +10,22 @@ Gmail account through the Gmail connector.
 
 ## How approval works
 
-The approval email (built by `python3 scripts/blog/blog_tools.py email <slug>`) has two buttons:
+The approval email (built by `python3 scripts/blog/blog_tools.py email <slug>`) has two one-click
+buttons that open `https://remedyhomebuyers.net/review/` (`review/index.html`):
 
-- **✅ Approve & Publish** opens a pre-filled email to Matt himself with subject
-  `BLOG-ACTION: APPROVE <slug> r<N>`. He presses Send.
-- **❌ Reject & Rewrite** opens a pre-filled email with subject
-  `BLOG-ACTION: REJECT <slug> r<N>`. He types what should change and presses Send.
+- **✅ Approve & Publish**: the page immediately posts the click to the Zapier workflow
+  `blog-review-buttons`, which emails `BLOG-ACTION: APPROVE <slug> r<N>` (body `token: <hex>`)
+  from help@remedyhomebuyers.net to Matt's inbox.
+- **❌ Reject & Rewrite**: the page shows a feedback box; on Send the same workflow emails
+  `BLOG-ACTION: REJECT <slug> r<N>` with the token and Matt's feedback.
 
-`r<N>` is the draft's `revision` in `posts.json`. Only an action matching the current revision
-counts, so clicking a button in an old email never publishes an outdated version.
+`email` generates a random token per email and stores only its SHA-256 as `review_hash` on the
+draft in `posts.json` (public file, so never the raw token). **Commit and push `posts.json`
+after running `email` and before sending the email**, or the token can't be verified.
+A small "Buttons not working? Email instead" fallback sends the same subject via mailto.
+
+`r<N>` is the draft's `revision`. Only an action matching the current revision counts, so a
+button in an old email never publishes an outdated version.
 
 ## Task 1: weekly draft (Mondays)
 
@@ -29,10 +36,10 @@ counts, so clicking a button in an old email never publishes an outdated version
 3. Write the post following `SKILL.md` (all SEO + GEO requirements, draft noindex meta).
 4. Add the `posts.json` entry (`draft: true`, `revision: 1`) and set the topic `"status": "drafted"`.
 5. `python3 scripts/blog/blog_tools.py check <slug>`: fix all errors and as many warnings as possible.
-6. Commit `posts/<slug>.html`, `posts.json`, `topics-queue.json` with message
-   `Draft: <title>` and push to `main`.
-7. `python3 scripts/blog/blog_tools.py email <slug>` prints JSON `{to, subject, htmlBody, body}`.
-   Send it with the Gmail `send_message` tool (`to`, `subject`, `htmlBody`, `body` as given).
+6. `python3 scripts/blog/blog_tools.py email <slug> > /tmp/email.json` (prints JSON
+   `{to, subject, htmlBody, body}` and writes `review_hash` into posts.json).
+7. Commit `posts/<slug>.html`, `posts.json`, `topics-queue.json` with message
+   `Draft: <title>` and push to `main`. Then send /tmp/email.json with the Gmail `send_message` tool (`to`, `subject`, `htmlBody`, `body` as given).
    If any facts couldn't be verified (see SKILL.md research step), insert a short
    "Please double-check" list right after the first `<h2>` of `htmlBody` before sending.
 
@@ -41,11 +48,15 @@ counts, so clicking a button in an old email never publishes an outdated version
 1. Sync `main` as above.
 2. Make sure the Gmail label `blog-processed` exists (`list_labels`, else `create_label`).
 3. Search Gmail:
-   `from:mvorwerk@remedyhomebuyers.net subject:"BLOG-ACTION" -label:blog-processed newer_than:30d`
+   `subject:"BLOG-ACTION" -label:blog-processed newer_than:30d`
    Read each thread with `get_thread` and collect messages whose subject matches
-   `BLOG-ACTION: (APPROVE|REJECT) <slug> r<N>` and whose sender is exactly
-   `mvorwerk@remedyhomebuyers.net`. Ignore anything else (e.g. old Zapier emails from
-   `help@remedyhomebuyers.net`). Handle them oldest first.
+   `BLOG-ACTION: (APPROVE|REJECT) <slug> r<N>`. An action is **authentic** only if either:
+   - its body contains `token: <32 hex>` and
+     `python3 scripts/blog/blog_tools.py verify <slug> <token>` prints `valid`, or
+   - it has no token, the sender is exactly `mvorwerk@remedyhomebuyers.net`, and it was sent by
+     Matt himself (mailto fallback / older emails).
+   Label anything inauthentic `blog-processed` and ignore it. Handle authentic ones oldest first.
+   (Run this after step 1's sync so `verify` sees the latest posts.json.)
 4. For each action, look up `<slug>` in `posts.json`:
    - Not found, already `draft: false`, or `revision` ≠ N → stale. Label it `blog-processed`, skip.
    - **APPROVE**:
@@ -57,8 +68,9 @@ counts, so clicking a button in an old email never publishes an outdated version
      text). If it is empty, rewrite for overall quality and say so. Rewrite
      `posts/<slug>.html` addressing **every** point while keeping all SKILL.md requirements, the
      same slug and the draft noindex meta; update the `posts.json` title/excerpt/readTime if they
-     changed; run `python3 scripts/blog/blog_tools.py bump <slug>`, then `check`. Commit as
-     `Revise: <slug> r<N+1>`, push to `main`, then send the new approval email (from `email <slug>`),
+     changed; run `python3 scripts/blog/blog_tools.py bump <slug>`, `check`, then `email <slug>`. Commit as
+     `Revise: <slug> r<N+1>` together with the posts.json written by `email <slug>` (run it after
+     `bump`), push to `main`, then send that new approval email,
      adding at the top a short "What changed" list mapping each feedback point to the edit.
    - Matt can reject as many times as he likes; each rejection produces a new revision.
 5. Label every handled message `blog-processed` (`label_message`) **after** its push succeeds,

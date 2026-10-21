@@ -77,7 +77,9 @@ Runs as two scheduled Claude Code cloud tasks (no laptop needs to be on). Full r
 4. Emails Matt the draft with **✅ Approve & Publish** and **❌ Reject & Rewrite** buttons
 
 ### Action processor — hourly
-The buttons open a pre-filled email (`BLOG-ACTION: APPROVE|REJECT {slug} r{N}`); Matt presses Send.
+The buttons are one click: they open `/review/` on the site, which posts to the private Zapier
+workflow **blog-review-buttons**; it emails `BLOG-ACTION: APPROVE|REJECT {slug} r{N}` (with a
+one-time token checked against `review_hash` in `posts.json`) to Matt's inbox for the processor.
 - `APPROVE` → `scripts/blog/blog_tools.py publish` flips `draft: false`, updates `sitemap.xml` and `llms.txt`, pushes to `main`, emails a confirmation
 - `REJECT` → rewrites the post using Matt's notes, bumps the revision, emails the new draft — repeats until approved
 

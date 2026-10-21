@@ -3,15 +3,18 @@
 
 Usage (run from the repo root):
   python3 scripts/blog/blog_tools.py check <slug>        SEO/GEO lint a post; exits 1 on errors
-  python3 scripts/blog/blog_tools.py email <slug>        print approval email as JSON {to, subject, htmlBody, body}
+  python3 scripts/blog/blog_tools.py email <slug>        print approval email JSON; writes a new review_hash to posts.json
+  python3 scripts/blog/blog_tools.py verify <slug> <tok> check a review token from an approval click
   python3 scripts/blog/blog_tools.py bump <slug>         increment a draft's revision (after a regenerate)
   python3 scripts/blog/blog_tools.py publish <slug>      flip draft -> live, drop noindex, sync sitemap + llms.txt
   python3 scripts/blog/blog_tools.py sitemap             sync blog URLs in sitemap.xml from posts.json
   python3 scripts/blog/blog_tools.py llms                regenerate llms.txt from posts.json
 """
+import hashlib
 import html
 import json
 import re
+import secrets
 import sys
 from datetime import date
 from pathlib import Path
@@ -132,18 +135,25 @@ def check(slug):
 # ---------- email ----------
 
 def email(slug):
+    """Print the approval email. Also stores a fresh review-token hash in posts.json,
+    so commit + push posts.json before sending the email."""
     posts = load("posts.json")
     p = find_post(posts, slug)
     rev = p.get("revision", 1)
+    token = secrets.token_hex(16)
+    p["review_hash"] = hashlib.sha256(token.encode()).hexdigest()
+    save("posts.json", posts)
     tag = f"{slug} r{rev}"
     preview = f"{SITE}/posts/{slug}.html"
 
+    def review(action):
+        return f"{SITE}/review/?a={action}&s={quote(slug)}&r={rev}&t={token}"
+
     def mailto(action, body):
         return (f"mailto:{APPROVER}?subject={quote(f'BLOG-ACTION: {action} {tag}')}"
-                f"&body={quote(body)}")
+                f"&body={quote(body + f'\n\ntoken: {token}')}")
 
-    approve = mailto("APPROVE", "Approved - publish it.\n\n(Just hit Send.)")
-    reject = mailto("REJECT", "What should change? Write your notes below, then hit Send:\n\n")
+    approve, reject = review("approve"), review("reject")
     btn = ("display:inline-block;padding:14px 28px;border-radius:10px;color:#fff;"
            "text-decoration:none;font-weight:700;font-size:16px;margin:6px")
     esc = html.escape
@@ -161,15 +171,24 @@ def email(slug):
 <a href="{esc(approve)}" style="{btn};background:#0a6b43">&#9989; Approve &amp; Publish</a>
 <a href="{esc(reject)}" style="{btn};background:#b42318">&#10060; Reject &amp; Rewrite</a>
 </div>
-<p style="color:#5a6675;font-size:13px">Clicking a button opens a pre-filled email &mdash; just press <b>Send</b>.
-For Reject, type what you want changed first; the next version will be rewritten from your notes.
-Actions are picked up within about an hour.</p>
-<p style="color:#9aa5b1;font-size:12px">Ref: {esc(tag)}</p>
+<p style="color:#5a6675;font-size:13px">One click: Approve publishes the post within about an hour.
+Reject opens a page where you type what to change; the rewrite is emailed back to you.</p>
+<p style="color:#9aa5b1;font-size:12px">Buttons not working? Email instead:
+<a href="{esc(mailto('APPROVE', 'Approved - publish it.'))}" style="color:#9aa5b1">approve</a> &middot;
+<a href="{esc(mailto('REJECT', 'What should change?'))}" style="color:#9aa5b1">reject</a> &middot; Ref: {esc(tag)}</p>
 </div>"""
     text = (f"New blog draft: {p['title']}\nPreview: {preview}\n\n"
             f"Approve: {approve}\nReject: {reject}\n\nRef: {tag}")
     print(json.dumps({"to": [APPROVER], "subject": f"Blog draft for approval: {p['title']} ({tag})",
                       "htmlBody": body_html, "body": text}, indent=2))
+
+
+def verify(slug, token):
+    """Exit 0 if token matches the draft's stored review hash."""
+    p = find_post(load("posts.json"), slug)
+    ok = bool(p.get("review_hash")) and hashlib.sha256(token.strip().lower().encode()).hexdigest() == p["review_hash"]
+    print("valid" if ok else "invalid")
+    sys.exit(0 if ok else 1)
 
 
 # ---------- bump / publish ----------
@@ -189,6 +208,7 @@ def publish(slug):
     p["date"] = new_date  # show as newest on /#blog
     p["draft"] = False
     p.pop("revision", None)
+    p.pop("review_hash", None)
     save("posts.json", posts)
 
     queue = load("topics-queue.json")
@@ -262,7 +282,7 @@ def llms():
 
 
 if __name__ == "__main__":
-    cmds = {"check": check, "email": email, "bump": bump, "publish": publish, "sitemap": sitemap, "llms": llms}
+    cmds = {"check": check, "email": email, "bump": bump, "publish": publish, "verify": verify, "sitemap": sitemap, "llms": llms}
     if len(sys.argv) < 2 or sys.argv[1] not in cmds:
         sys.exit(__doc__)
     fn = cmds[sys.argv[1]]
