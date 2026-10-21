@@ -66,26 +66,27 @@ Both forms include a hidden **honeypot field** (`name="website"`). If filled, th
 
 ## Blog Automation
 
-Two scheduled Claude tasks running on the owner's Mac:
+Runs as two scheduled Claude Code cloud tasks (no laptop needs to be on). Full runbook:
+[`.claude/skills/blog-post/automation.md`](.claude/skills/blog-post/automation.md). Writing rules
+(SEO + GEO) live in [`.claude/skills/blog-post/SKILL.md`](.claude/skills/blog-post/SKILL.md).
 
-### `weekly-blog-post`
-Runs every Monday at 9 AM local. For each run:
-1. Reads `topics-queue.json` → picks the first `status: "queued"` topic
-2. Reads `brand.md` for voice + `topic-images.json` for image selection
-3. Generates a 1,500–2,000 word SEO-optimized post in the established blog template
-4. Commits 3 files via Zapier MCP (GitHub: Create or Update File):
-   - `posts/{slug}.html` (new)
-   - `posts.json` (updated with new entry, `draft: true`)
-   - `topics-queue.json` (topic marked `drafted`)
-5. Emails Matt the draft with `✅ Approve & Publish` and `❌ Reject & Discard` buttons
+### Weekly draft — Mondays ~8:45 AM Pacific
+1. Picks the first `queued` topic in `topics-queue.json`
+2. Writes a 1,500–2,000 word post following `brand.md` and the SEO/GEO skill
+3. Commits `posts/{slug}.html` + `posts.json` (`draft: true`, hidden from `/#blog`, `noindex`) to `main`
+4. Emails Matt the draft with **✅ Approve & Publish** and **❌ Reject & Rewrite** buttons
 
-### `blog-action-processor`
-Runs every 15 minutes. Scans Gmail for emails with subject `BLOG-ACTION:` (sent by the approve/reject Zap when buttons are clicked). For each:
-- `APPROVE` → flips `draft: false` in `posts.json`, marks topic `published` in `topics-queue.json`
-- `REJECT` → removes the entry from `posts.json`, marks topic `rejected` in `topics-queue.json`
-- Sends Matt a confirmation email
+### Action processor — hourly
+The buttons open a pre-filled email (`BLOG-ACTION: APPROVE|REJECT {slug} r{N}`); Matt presses Send.
+- `APPROVE` → `scripts/blog/blog_tools.py publish` flips `draft: false`, updates `sitemap.xml` and `llms.txt`, pushes to `main`, emails a confirmation
+- `REJECT` → rewrites the post using Matt's notes, bumps the revision, emails the new draft — repeats until approved
 
-If you don't click either button, the draft sits indefinitely with `draft: true` (invisible on `/#blog`).
+### Helper script
+```bash
+python3 scripts/blog/blog_tools.py check <slug>    # SEO/GEO lint
+python3 scripts/blog/blog_tools.py publish <slug>  # publish a draft manually
+python3 scripts/blog/blog_tools.py sitemap         # resync blog URLs in sitemap.xml
+```
 
 ## Editing Common Files
 
