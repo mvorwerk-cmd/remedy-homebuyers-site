@@ -21,6 +21,12 @@ approval email, processing Approve/Reject clicks) is in [automation.md](automati
    primary sources (state legislature code sites, county court / register of wills pages,
    `.gov` agencies, HUD, CFPB, IRS). Verify every number you state; if you can't verify it,
    leave it out.
+   If fetching a source fails (network policy, timeout), use WebSearch and rely on results from
+   official domains (`.gov`, state legislature sites) — the search snippet plus URL is an
+   acceptable citation. If a specific figure still can't be confirmed, write around it (explain
+   the rule and link the official page) instead of stating the number. Never abandon the draft
+   because one source is unreachable: finish it and list anything you couldn't verify under
+   "Please double-check" at the top of the approval email.
 
 ## SEO requirements
 

@@ -33,6 +33,8 @@ counts, so clicking a button in an old email never publishes an outdated version
    `Draft: <title>` and push to `main`.
 7. `python3 scripts/blog/blog_tools.py email <slug>` prints JSON `{to, subject, htmlBody, body}`.
    Send it with the Gmail `send_message` tool (`to`, `subject`, `htmlBody`, `body` as given).
+   If any facts couldn't be verified (see SKILL.md research step), insert a short
+   "Please double-check" list right after the first `<h2>` of `htmlBody` before sending.
 
 ## Task 2: process actions (hourly)
 
