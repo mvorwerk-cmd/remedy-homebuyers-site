@@ -155,8 +155,9 @@ def email(slug):
         return f"{SITE}/review/?a={action}&s={quote(slug)}&r={rev}&t={token}"
 
     def mailto(action, body):
-        return (f"mailto:{APPROVER}?subject={quote(f'BLOG-ACTION: {action} {tag}')}"
-                f"&body={quote(body + f'\n\ntoken: {token}')}")
+        subject = quote(f"BLOG-ACTION: {action} {tag}")
+        text = quote(body + "\n\ntoken: " + token)
+        return f"mailto:{APPROVER}?subject={subject}&body={text}"
 
     approve, reject = review("approve"), review("reject")
     btn = ("display:inline-block;padding:14px 28px;border-radius:10px;color:#fff;"
