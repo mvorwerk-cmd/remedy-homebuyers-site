@@ -171,6 +171,102 @@
       "state": "OH",
       "category": "how-to-sell",
       "status": "published"
+    },
+    {
+      "slug": "back-taxes-chicago-il",
+      "title": "Behind on Property Taxes in Chicago? Cook County Tax Sale Rules and Your Options",
+      "city": "Chicago",
+      "state": "IL",
+      "category": "tax-lien",
+      "status": "drafted"
+    },
+    {
+      "slug": "tenant-occupied-house-houston-tx",
+      "title": "Selling a Tenant-Occupied House in Houston: Texas Landlord and Buyer Rules",
+      "city": "Houston",
+      "state": "TX",
+      "category": "tenant-occupied",
+      "status": "queued"
+    },
+    {
+      "slug": "code-violations-baltimore-md",
+      "title": "Selling a Baltimore House with Code Violations: Maryland Options",
+      "city": "Baltimore",
+      "state": "MD",
+      "category": "code-violation",
+      "status": "queued"
+    },
+    {
+      "slug": "foreclosure-memphis-tn",
+      "title": "Facing Foreclosure in Memphis, TN: Nonjudicial Process and Your Options",
+      "city": "Memphis",
+      "state": "TN",
+      "category": "foreclosure",
+      "status": "queued"
+    },
+    {
+      "slug": "inherited-house-los-angeles-ca",
+      "title": "Inherited a House in Los Angeles? California Probate Sale Basics",
+      "city": "Los Angeles",
+      "state": "CA",
+      "category": "probate",
+      "status": "queued"
+    },
+    {
+      "slug": "divorce-phoenix-az",
+      "title": "Divorce and Your Phoenix Home: Arizona Community Property Rules",
+      "city": "Phoenix",
+      "state": "AZ",
+      "category": "divorce",
+      "status": "queued"
+    },
+    {
+      "slug": "sell-distressed-house-detroit-mi",
+      "title": "How to Sell a Distressed House in Detroit Without a Realtor",
+      "city": "Detroit",
+      "state": "MI",
+      "category": "how-to-sell",
+      "status": "queued"
+    },
+    {
+      "slug": "foreclosure-law-update-2026-chicago",
+      "title": "Illinois Foreclosure Law Changes 2026: What Chicago Homeowners Should Know",
+      "city": "Chicago",
+      "state": "IL",
+      "category": "law-update",
+      "status": "queued"
+    },
+    {
+      "slug": "fire-damaged-house-st-louis-mo",
+      "title": "Selling a Fire-Damaged House in St. Louis: Your Options",
+      "city": "St. Louis",
+      "state": "MO",
+      "category": "code-violation",
+      "status": "queued"
+    },
+    {
+      "slug": "inherited-house-pittsburgh-pa",
+      "title": "Inherited a House in Pittsburgh? Allegheny County Probate Explained",
+      "city": "Pittsburgh",
+      "state": "PA",
+      "category": "probate",
+      "status": "queued"
+    },
+    {
+      "slug": "tax-lien-sale-newark-nj",
+      "title": "Selling a Newark House with a Tax Lien: New Jersey Options",
+      "city": "Newark",
+      "state": "NJ",
+      "category": "tax-lien",
+      "status": "queued"
+    },
+    {
+      "slug": "pre-foreclosure-tucson-az",
+      "title": "Pre-Foreclosure in Tucson: Arizona Trustee Sale Timeline and Options",
+      "city": "Tucson",
+      "state": "AZ",
+      "category": "foreclosure",
+      "status": "queued"
     }
   ]
 }
