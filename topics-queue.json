@@ -186,7 +186,7 @@
       "city": "Houston",
       "state": "TX",
       "category": "tenant-occupied",
-      "status": "queued"
+      "status": "drafted"
     },
     {
       "slug": "code-violations-baltimore-md",
